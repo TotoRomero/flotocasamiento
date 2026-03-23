@@ -103,13 +103,14 @@ header svg {
   display: block;
   margin-top: 40px;
 }
-.section:nth-child(even) {
+.section:nth-of-type(even) {
   background: #fff;
 }
 
-.section:nth-child(odd) {
+.section:nth-of-type(odd) {
   background: #fffaf5;
 }
+
 .hero {
   position: relative;
   height: 40vh;
@@ -200,6 +201,11 @@ h2::after {
   object-fit: cover;
   border-radius: 15px;
   filter: brightness(0.95);
+}
+.photo-grid {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 p {
@@ -427,7 +433,7 @@ html {
       </div>
     </div>
 
-    <a class="btn" href="https://forms.gle/tu-form" target="_blank">
+    <a class="btn btn-primary" href="https://forms.gle/tu-form"> target="_blank">
       Confirmar que venís 💛
     </a>
 
