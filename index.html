@@ -16,7 +16,7 @@ body {
   animation: fadePage 1s ease;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(180deg, #fffaf5 0%, #fdf1e7 100%);
+  background: linear-gradient(180deg, #f3e7dc 0%, #e8d8c8 100%);
   color: #3a2e2a;
   text-align: center;
 }
@@ -35,8 +35,13 @@ h1 {
 }
 
 .section {
-  padding: 100px 20px;
-  position: relative;
+  padding: 70px 20px;
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 50px 15px;
+  }
 }
 
 .section::after {
@@ -52,10 +57,10 @@ h1 {
 .card {
   max-width: 500px;
   margin: auto;
-  background: white;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  background: #ffffff;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   transition: 0.3s;
 }
 
