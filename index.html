@@ -434,7 +434,6 @@ html {
     </div>
 
 	<a class="btn btn-primary" href="https://forms.gle/tu-form" target="_blank">
-
       Confirmar que venís 💛
     </a>
 
@@ -506,3 +505,18 @@ html {
     document.getElementById("minutes").innerText = minutes;
   }, 1000);
 </script>
+<script>
+  const elements = document.querySelectorAll('.fade-in');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  elements.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
