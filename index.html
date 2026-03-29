@@ -152,6 +152,26 @@ header svg {
   font-size: 3.5em;
   margin: 0;
   letter-spacing: 2px;
+  animation: heroFadeScale 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.subtitle {
+  font-size: 1.3em;
+  margin-top: 10px;
+  opacity: 0;
+  animation: heroSubtitleFade 1s ease forwards;
+  animation-delay: 1s;
+}
+
+.countdown-box {
+  opacity: 0;
+  animation: heroCountdownFade 1s ease forwards;
+  animation-delay: 1.6s;
+  /* el resto de propiedades que ya tenías */
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
 }
 
 .subtitle {
@@ -435,6 +455,28 @@ html {
 
 .alias-header svg {
   color: #e76f51;
+}
+@keyframes heroFadeScale {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+    letter-spacing: 8px;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    letter-spacing: 2px;
+  }
+}
+
+@keyframes heroSubtitleFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroCountdownFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
   </style>
 </head>
