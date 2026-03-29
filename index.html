@@ -483,7 +483,32 @@ html {
     font-size: 0.7em;
   }
 }
+.alias-copy-btn {
+  background: none;
+  border: 1px solid #e76f51;
+  color: #e76f51;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 0.8em;
+  cursor: pointer;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
 
+.alias-copy-btn:hover {
+  background: #e76f51;
+  color: white;
+}
+
+.alias-copy-btn.copied {
+  background: #4caf50;
+  border-color: #4caf50;
+  color: white;
+}
   </style>
 </head>
 
@@ -675,20 +700,30 @@ html {
     <p>Pero si además querés ayudarnos a cumplir nuestro próximo sueño…</p>
     <p>¡Nos encantaría contar con tu aporte para la luna de miel!</p>
     <hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
-    <div class="alias-box">
-      <div class="alias-header">
-        <i data-lucide="dollar-sign" width="18" height="18"></i>
-        Alias en dólares
-      </div>
-      <p class="alias">floto.casamiento</p>
-    </div>
-    <div class="alias-box">
-      <div class="alias-header">
-        <i data-lucide="banknote" width="18" height="18"></i>
-        Alias en pesos
-      </div>
-      <p class="alias">floto.casamiento.ars</p>
-    </div>
+<div class="alias-box">
+  <div class="alias-header">
+    <i data-lucide="dollar-sign" width="18" height="18"></i>
+    Alias en dólares
+  </div>
+  <p class="alias">floto.casamiento</p>
+  <button class="alias-copy-btn" onclick="copyAlias(this, 'floto.casamiento')">
+    <i data-lucide="copy" width="14" height="14"></i>
+    Copiar
+  </button>
+</div>
+
+<div class="alias-box">
+  <div class="alias-header">
+    <i data-lucide="banknote" width="18" height="18"></i>
+    Alias en pesos
+  </div>
+  <p class="alias">floto.casamiento.ars</p>
+  <button class="alias-copy-btn" onclick="copyAlias(this, 'floto.casamiento.ars')">
+    <i data-lucide="copy" width="14" height="14"></i>
+    Copiar
+  </button>
+</div>
+
   </div>
 </div>
 
@@ -743,6 +778,19 @@ html {
     });
   });
   elements.forEach(el => observer.observe(el));
+
+function copyAlias(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<i data-lucide="check" width="14" height="14"></i> ¡Copiado!';
+    lucide.createIcons();
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<i data-lucide="copy" width="14" height="14"></i> Copiar';
+      lucide.createIcons();
+    }, 2000);
+  });
+}
 </script>
 </body>
 </html>
