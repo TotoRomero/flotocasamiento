@@ -318,29 +318,44 @@ html {
   transform: translateY(-3px);
 }
 .floating-menu{
-  position:fixed;
-  top:15px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(255,255,255,0.85);
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,0.95);
   backdrop-filter:blur(10px);
-  padding:8px 15px;
-  border-radius:30px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  padding:12px 20px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
   z-index:1000;
+  display:flex;
+  justify-content:center;
+  gap:25px;
 }
 
 .floating-menu a{
-  margin:0 10px;
   text-decoration:none;
   color:#3a2e2a;
-  font-size:0.9em;
+  font-size:0.95em;
   font-weight:500;
-  transition:0.3s;
+  letter-spacing:0.5px;
+  position:relative;
+  padding-bottom:4px;
 }
 
 .floating-menu a:hover{
   color:#e76f51;
+}
+.floating-menu a::after{
+  content:"";
+  position:absolute;
+  width:0;
+  height:2px;
+  left:0;
+  bottom:0;
+  background:#e76f51;
+  transition:0.3s;
+}
+
+.floating-menu a:hover::after{
+  width:100%;
 }
 @media (max-width:600px){
 
@@ -360,15 +375,6 @@ html {
 </head>
 
 <body>
-<nav class="floating-menu">
-  <a href="#historia">Historia</a>
-  <a href="#fecha">Fecha</a>
-  <a href="#dresscode">Dress</a>
-  <a href="#lugar">Lugar</a>
-  <a href="#rsvp">Confirmar</a>
-  <a href="#luna">Luna de miel</a>
-  <a href="#fotos">Fotos del Evento</a>
-</nav>
 
 <header class="hero">
   <div class="overlay"></div>
@@ -392,6 +398,16 @@ html {
 		</div>
   </div>
 </header>
+
+<nav class="floating-menu">
+  <a href="#historia">Historia</a>
+  <a href="#fecha">Fecha</a>
+  <a href="#dresscode">Dress</a>
+  <a href="#lugar">Lugar</a>
+  <a href="#rsvp">Confirmar</a>
+  <a href="#luna">Luna de miel</a>
+  <a href="#fotos">Fotos del Evento</a>
+</nav>
 
 <div id="historia" class="section fade-in historia-section">
   <div class="card">
