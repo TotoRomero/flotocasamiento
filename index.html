@@ -2,10 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>💍 Flora & Toto 💍</title>
+  <title>Flora & Toto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
 @keyframes fadePage {
@@ -88,7 +89,6 @@ h1 {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-
 img {
   max-width: 100%;
   border-radius: 15px;
@@ -126,7 +126,7 @@ header svg {
   text-align: center;
   color: white;
   background: url('foto1.jpg') center 38%/cover no-repeat;
-  overflow: hidden;0
+  overflow: hidden;
 }
 .hero::after {
   content: "";
@@ -136,15 +136,13 @@ header svg {
   height: 80px;
   background: linear-gradient(to bottom, transparent, #fffaf5);
 }
-/* capa suave arriba para profundidad */
 .overlay {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   background: rgba(0,0,0,0.25);
 }
 
-/* contenido centrado */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -160,12 +158,6 @@ header svg {
   font-size: 1.3em;
   margin-top: 10px;
   opacity: 0.95;
-}
-
-.countdown {
-  margin-top: 25px;
-  font-size: 1.4em;
-  font-weight: 300;
 }
 
 .fade-in {
@@ -199,7 +191,7 @@ h2::after {
 .historia-section {
   background: linear-gradient(180deg, #fffaf5, #fdf1e7);
   max-width: 650px;
-  margin: 0 auto;   /* 👈 esto lo centra */
+  margin: 0 auto;
 }
 
 .photo-grid img {
@@ -227,7 +219,17 @@ p {
 .info-item {
   margin: 10px 0;
   font-size: 0.95em;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
+
+.info-item .icon-inline {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #e76f51;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -274,6 +276,10 @@ html {
   display: inline-block;
   margin-top: 20px;
   box-shadow: 0 10px 25px rgba(231,111,81,0.4);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -298,6 +304,11 @@ html {
   border-radius: 12px;
   backdrop-filter: blur(6px);
   min-width: 70px;
+  transition: transform 0.3s ease;
+}
+
+.time:hover {
+  transform: translateY(-3px);
 }
 
 .time span {
@@ -310,69 +321,121 @@ html {
   font-size: 0.8em;
   opacity: 0.8;
 }
-.time {
+
+.floating-menu {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  padding: 12px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.floating-menu a {
+  text-decoration: none;
+  color: #3a2e2a;
+  font-size: 0.85em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.floating-menu a:hover {
+  color: #e76f51;
+}
+
+.floating-menu a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: #e76f51;
+  transition: 0.3s;
+}
+
+.floating-menu a:hover::after {
+  width: 100%;
+}
+
+.floating-menu a svg {
+  color: #e76f51;
   transition: transform 0.3s ease;
 }
 
-.time:hover {
-  transform: translateY(-3px);
-}
-.floating-menu{
-  position:sticky;
-  top:0;
-  background:rgba(255,255,255,0.95);
-  backdrop-filter:blur(10px);
-  padding:12px 20px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.08);
-  z-index:1000;
-  display:flex;
-  justify-content:center;
-  gap:25px;
+.floating-menu a:hover svg {
+  transform: scale(1.2);
 }
 
-.floating-menu a{
-  text-decoration:none;
-  color:#3a2e2a;
-  font-size:1em;
-  font-weight:500;
-  letter-spacing:0.5px;
-  position:relative;
-  padding-bottom:4px;
+.floating-menu .nav-label {
+  font-size: 0.75em;
+  color: inherit;
 }
 
-.floating-menu a:hover{
-  color:#e76f51;
-}
-.floating-menu a::after{
-  content:"";
-  position:absolute;
-  width:0;
-  height:2px;
-  left:0;
-  bottom:0;
-  background:#e76f51;
-  transition:0.3s;
-}
-
-.floating-menu a:hover::after{
-  width:100%;
-}
-@media (max-width:600px){
-
-  .floating-menu{
-    width:90%;
-    display:flex;
-    justify-content:space-around;
-    font-size:0.45em;
-	flex:0 0 auto;
+@media (max-width: 600px) {
+  .floating-menu {
+    gap: 10px 14px;
+    padding: 10px 12px;
+    justify-content: space-around;
   }
 
-  .floating-menu a{
-    margin:0 4px;
+  .floating-menu a {
+    font-size: 0.7em;
   }
 
+  .floating-menu .nav-label {
+    font-size: 0.68em;
+  }
 }
 
+/* Títulos de sección con ícono */
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.section-title svg {
+  color: #e76f51;
+  flex-shrink: 0;
+}
+
+/* Botones con íconos */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-icon svg {
+  flex-shrink: 0;
+}
+
+/* Alias box con ícono */
+.alias-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.alias-header svg {
+  color: #e76f51;
+}
   </style>
 </head>
 
@@ -380,181 +443,221 @@ html {
 
 <header class="hero">
   <div class="overlay"></div>
-
   <div class="hero-content">
     <h1>Flora & Toto</h1>
     <p class="subtitle">¡Nos casamos!</p>
-		<div class="countdown-box">
-		  <div class="time">
-			<span id="days">0</span>
-			<small>días</small>
-		  </div>
-		  <div class="time">
-			<span id="hours">0</span>
-			<small>hs</small>
-		  </div>
-		  <div class="time">
-			<span id="minutes">0</span>
-			<small>min</small>
-		  </div>
-		</div>
+    <div class="countdown-box">
+      <div class="time">
+        <span id="days">0</span>
+        <small>días</small>
+      </div>
+      <div class="time">
+        <span id="hours">0</span>
+        <small>hs</small>
+      </div>
+      <div class="time">
+        <span id="minutes">0</span>
+        <small>min</small>
+      </div>
+      <div class="time">
+        <span id="seconds">0</span>
+        <small>seg</small>
+      </div>
+
+    </div>
   </div>
 </header>
 
 <nav class="floating-menu">
-  <a href="#historia">Historia</a>
-  <a href="#fecha">Fecha</a>
-  <a href="#lugar">Lugar</a>
-  <a href="#dresscode">Dress</a>
-  <a href="#rsvp">Confirmar</a>
-  <a href="#luna">Regalo</a>
-  <a href="#fotos">Fotos</a>
+  <a href="#historia">
+    <i data-lucide="heart" width="18" height="18"></i>
+    <span class="nav-label">Historia</span>
+  </a>
+  <a href="#fecha">
+    <i data-lucide="calendar" width="18" height="18"></i>
+    <span class="nav-label">Fecha</span>
+  </a>
+  <a href="#lugar">
+    <i data-lucide="map-pin" width="18" height="18"></i>
+    <span class="nav-label">Lugar</span>
+  </a>
+  <a href="#dresscode">
+    <i data-lucide="shirt" width="18" height="18"></i>
+    <span class="nav-label">Dress</span>
+  </a>
+  <a href="#rsvp">
+    <i data-lucide="check-circle" width="18" height="18"></i>
+    <span class="nav-label">Confirmar</span>
+  </a>
+  <a href="#luna">
+    <i data-lucide="gift" width="18" height="18"></i>
+    <span class="nav-label">Regalo</span>
+  </a>
+  <a href="#fotos">
+    <i data-lucide="camera" width="18" height="18"></i>
+    <span class="nav-label">Fotos</span>
+  </a>
 </nav>
 
+<!-- HISTORIA -->
 <div id="historia" class="section fade-in historia-section">
   <div class="card">
-    <h2>📸 Nuestra historia</h2>
-
+    <h2 class="section-title">
+      <i data-lucide="image" width="24" height="24"></i>
+      Nuestra historia
+    </h2>
     <p style="margin-top:15px;">
       Todo empezó casi sin darnos cuenta en la Taberna de Gilgamesh con una stout (varias) y un gin tonic (varios) de por medio.
     </p>
     <p>
       Desde pasar una pandemia en monoambiente hasta viajes lluviosos, mudanzas y momentos compartidos fuimos construyendo este camino juntos que nos trajo hasta acá... y ahora queremos celebrarlo con ustedes
     </p>
-    <p>
-      Hoy queremos celebrarlo con ustedes ✨
-    </p>
-<hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
-<div class="photo-grid">
-  <img src="foto1.jpg">
-  <img src="foto2.png">
-</div>
-
+    <p>Hoy queremos celebrarlo con ustedes ✨</p>
+    <hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
+    <div class="photo-grid">
+      <img src="foto1.jpg" alt="Flora y Toto - foto 1">
+      <img src="foto2.png" alt="Flora y Toto - foto 2">
+    </div>
   </div>
 </div>
 
-
+<!-- FECHA -->
 <div id="fecha" class="section fade-in">
   <div class="card">
-    <h2>📅 Fecha</h2>
+    <h2 class="section-title">
+      <i data-lucide="calendar-heart" width="24" height="24"></i>
+      Fecha
+    </h2>
     <p>
-	21 de Noviembre de 2026 <br>
-	18:00 puntual
-	</p> 	
-<img src="fecha2.jpeg" alt="Calendario">
+      21 de Noviembre de 2026<br>
+      18:00 puntual
+    </p>
+    <img src="fecha2.jpeg" alt="Calendario del evento">
   </div>
 </div>
 
+<!-- LUGAR -->
 <div id="lugar" class="section fade-in">
   <div class="card">
-    <h2>📍 Lugar: Samara Pilar</h2>
-
-    <iframe 
+    <h2 class="section-title">
+      <i data-lucide="map-pin" width="24" height="24"></i>
+      Lugar: Samara Pilar
+    </h2>
+    <iframe
       src="https://www.google.com/maps?q=Samara+Pilar&output=embed"
-      width="100%" 
-      height="300" 
+      width="100%"
+      height="300"
       style="border:0; border-radius:15px;"
       allowfullscreen=""
       loading="lazy">
     </iframe>
-
     <br>
-    <a class="btn" href="https://maps.app.goo.gl/iecWhLFWfxy5i8A37" target="_blank">
+    <a class="btn btn-icon" href="https://maps.app.goo.gl/iecWhLFWfxy5i8A37" target="_blank">
+      <i data-lucide="navigation" width="16" height="16"></i>
       Abrir en Google Maps
     </a>
   </div>
 </div>
 
+<!-- DRESS CODE -->
 <div id="dresscode" class="section fade-in">
   <div class="card">
-    <h2>👔 Dress Code</h2>
-
+    <h2 class="section-title">
+      <i data-lucide="shirt" width="24" height="24"></i>
+      Dress Code
+    </h2>
     <p><strong>Elegante</strong></p>
     <p>
       Queremos que se sientan cómodos y cancheros ✨<br>
-      Traje, vestido o look elegante. <br>
-	  Lo que quieras, pero bien coqueto.
+      Traje, vestido o look elegante.<br>
+      Lo que quieras, pero bien coqueto.
     </p>
-
     <p style="margin-top:15px;">
-      <em>Tip:</em> el evento es al aire libre 🌿
+      <em>Tip:</em> el evento es al aire libre
+      <i data-lucide="tree-pine" width="16" height="16" style="vertical-align:middle; color:#e76f51;"></i>
     </p>
   </div>
 </div>
 
-
+<!-- RSVP -->
 <div id="rsvp" class="section fade-in rsvp-section">
   <div class="card">
-    <h2>✅ Confirmar asistencia</h2>
-
+    <h2 class="section-title">
+      <i data-lucide="check-circle" width="24" height="24"></i>
+      Confirmar asistencia
+    </h2>
     <p style="margin-top:15px;">
       Tu confirmación es muy importante para poder organizar todo de la mejor manera 💛
     </p>
-
     <div class="info-list">
       <div class="info-item">
-        📝 Te vamos a pedir que nos indiques si necesitás menú especial (vegano o celíaco)
-      </div>
-     <div class="info-item">
-        🚗 Si vas a manejar, te pedimos por favor no consumir alcohol
+        <i data-lucide="clipboard-list" width="18" height="18" class="icon-inline"></i>
+        <span>Te vamos a pedir que nos indiques si necesitás menú especial (vegano o celíaco)</span>
       </div>
       <div class="info-item">
-        🚕 Recomendamos venir en Cabify o coordinar combis compartidas
+        <i data-lucide="car" width="18" height="18" class="icon-inline"></i>
+        <span>Si vas a manejar, te pedimos por favor no consumir alcohol</span>
       </div>
-	  <div class="info-item">
-        👶 Evento solo para adultos
+      <div class="info-item">
+        <i data-lucide="navigation-2" width="18" height="18" class="icon-inline"></i>
+        <span>Recomendamos venir en Cabify o coordinar combis compartidas</span>
+      </div>
+      <div class="info-item">
+        <i data-lucide="user-x" width="18" height="18" class="icon-inline"></i>
+        <span>Evento solo para adultos</span>
       </div>
     </div>
-
-	<a class="btn btn-primary" href="https://forms.gle/tu-form" target="_blank">
-      Confirmar que venís 💛
+    <a class="btn btn-primary btn-icon" href="https://forms.gle/tu-form" target="_blank">
+      <i data-lucide="heart-handshake" width="20" height="20"></i>
+      Confirmar que venís
     </a>
-
   </div>
 </div>
 
+<!-- REGALO -->
 <div id="luna" class="section fade-in">
   <div class="card">
-    <h2>✈️ Nuestro regalo</h2>
-
+    <h2 class="section-title">
+      <i data-lucide="plane" width="24" height="24"></i>
+      Nuestro regalo
+    </h2>
     <p style="margin-top:15px;">
       El mejor regalo es que nos acompañen en este día tan especial 💛
     </p>
-
-    <p>
-      Pero si además querés ayudarnos a cumplir nuestro próximo sueño…
-    </p>
-
-    <p>
-      ✈️ ¡Nos encantaría contar con tu aporte para la luna de miel!
-    </p>
-
+    <p>Pero si además querés ayudarnos a cumplir nuestro próximo sueño…</p>
+    <p>¡Nos encantaría contar con tu aporte para la luna de miel!</p>
     <hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
-
     <div class="alias-box">
-      <p><strong>💲 Alias en dólares</strong></p>
+      <div class="alias-header">
+        <i data-lucide="dollar-sign" width="18" height="18"></i>
+        Alias en dólares
+      </div>
       <p class="alias">floto.casamiento</p>
     </div>
-	<div class="alias-box">
-      <p><strong>💵 Alias en pesos</strong></p>
+    <div class="alias-box">
+      <div class="alias-header">
+        <i data-lucide="banknote" width="18" height="18"></i>
+        Alias en pesos
+      </div>
       <p class="alias">floto.casamiento.ars</p>
     </div>
-
-
   </div>
 </div>
 
+<!-- FOTOS -->
 <div id="fotos" class="section fade-in">
   <div class="card">
-    <h2>📸 Fotos del evento</h2>
-
-    <p>¡Escaneá el QR o ingresá con el botón y subí tus fotos de la fiesta! 📷 </p>
-
-    <img src="qr.png" alt="QR fotos" style="max-width:200px;">
-
+    <h2 class="section-title">
+      <i data-lucide="camera" width="24" height="24"></i>
+      Fotos del evento
+    </h2>
+    <p>¡Escaneá el QR o ingresá con el botón y subí tus fotos de la fiesta!</p>
+    <img src="qr.png" alt="QR código para subir fotos" style="max-width:200px;">
     <br>
-
-    <a class="btn" href="https://photos.app.goo.gl/7w9BtaCyhyr1gKTo7">Ir al álbum</a>
+    <a class="btn btn-icon" href="https://photos.app.goo.gl/7w9BtaCyhyr1gKTo7" target="_blank">
+      <i data-lucide="image" width="16" height="16"></i>
+      Ir al álbum
+    </a>
   </div>
 </div>
 
@@ -564,24 +667,26 @@ html {
 </footer>
 
 <script>
-  const weddingDate = new Date("Nov 21, 2026 18:00:00").getTime();
+  // Inicializar íconos Lucide
+  lucide.createIcons();
 
+  // Countdown
+  const weddingDate = new Date("Nov 21, 2026 18:00:00").getTime();
   setInterval(() => {
     const now = new Date().getTime();
     const distance = weddingDate - now;
-
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((distance / (1000 * 60)) % 60);
-
+    const seconds = Math.floor(((distance / (1000 * 60)) % 60)%60);
     document.getElementById("days").innerText = days;
     document.getElementById("hours").innerText = hours;
     document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
   }, 1000);
-</script>
-<script>
-  const elements = document.querySelectorAll('.fade-in');
 
+  // Fade-in on scroll
+  const elements = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -589,7 +694,6 @@ html {
       }
     });
   });
-
   elements.forEach(el => observer.observe(el));
 </script>
 </body>
