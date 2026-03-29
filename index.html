@@ -317,17 +317,64 @@ html {
 .time:hover {
   transform: translateY(-3px);
 }
+.floating-menu{
+  position:fixed;
+  top:15px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(10px);
+  padding:8px 15px;
+  border-radius:30px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  z-index:1000;
+}
 
+.floating-menu a{
+  margin:0 10px;
+  text-decoration:none;
+  color:#3a2e2a;
+  font-size:0.9em;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.floating-menu a:hover{
+  color:#e76f51;
+}
+@media (max-width:600px){
+
+  .floating-menu{
+    width:90%;
+    display:flex;
+    justify-content:space-around;
+    font-size:0.8em;
+  }
+
+  .floating-menu a{
+    margin:0 4px;
+  }
+
+}
   </style>
 </head>
 
 <body>
+<nav class="floating-menu">
+  <a href="#historia">Historia</a>
+  <a href="#fecha">Fecha</a>
+  <a href="#dresscode">Dress</a>
+  <a href="#lugar">Lugar</a>
+  <a href="#rsvp">Confirmar</a>
+  <a href="#luna">Luna de miel</a>
+  <a href="#fotos">Fotos del Evento</a>
+</nav>
 
 <header class="hero">
   <div class="overlay"></div>
 
   <div class="hero-content">
-    <h1>💍 Flora & Toto 💍</h1>
+    <h1>Flora & Toto</h1>
     <p class="subtitle">¡Nos casamos!</p>
 		<div class="countdown-box">
 		  <div class="time">
@@ -346,15 +393,15 @@ html {
   </div>
 </header>
 
-<div class="section fade-in historia-section">
+<div id="historia" class="section fade-in historia-section">
   <div class="card">
     <h2>📸 Nuestra historia</h2>
 
     <p style="margin-top:15px;">
-      Todo empezó casi sin darnos cuenta en la Taberna de Gilgamesh y terminó siendo lo mejor que nos pasó 💛
+      Todo empezó casi sin darnos cuenta en la Taberna de Gilgamesh con una stout (varias) y un gin tonic (varios) de por medio.
     </p>
     <p>
-      Entre risas, planes y momentos compartidos, fuimos construyendo este camino juntos. (cursi)
+      Desde pasar una pandemia en monoambiente hasta viajes lluviosos, mudanzas y momentos compartidos fuimos construyendo este camino juntos que nos trajo hasta acá... y ahora queremos celebrarlo con ustedes
     </p>
     <p>
       Hoy queremos celebrarlo con ustedes ✨
@@ -369,7 +416,7 @@ html {
 </div>
 
 
-<div class="section fade-in">
+<div id="fecha" class="section fade-in">
   <div class="card">
     <h2>📅 Fecha</h2>
     <p>
@@ -380,7 +427,7 @@ html {
   </div>
 </div>
 
-<div class="section fade-in">
+<div id="dresscode" class="section fade-in">
   <div class="card">
     <h2>👔 Dress Code</h2>
 
@@ -388,7 +435,7 @@ html {
     <p>
       Queremos que se sientan cómodos y cancheros ✨<br>
       Traje, vestido o look elegante. <br>
-	  Lo que quieras, pero bien facha.
+	  Lo que quieras, pero bien coqueto.
     </p>
 
     <p style="margin-top:15px;">
@@ -397,7 +444,7 @@ html {
   </div>
 </div>
 
-<div class="section fade-in">
+<div id="lugar" class="section fade-in">
   <div class="card">
     <h2>📍 Lugar: Samara Pilar</h2>
 
@@ -417,7 +464,7 @@ html {
   </div>
 </div>
 
-<div class="section fade-in rsvp-section">
+<div id="rsvp" class="section fade-in rsvp-section">
   <div class="card">
     <h2>✅ Confirmar asistencia</h2>
 
@@ -447,7 +494,7 @@ html {
   </div>
 </div>
 
-<div class="section fade-in">
+<div id="luna" class="section fade-in">
   <div class="card">
     <h2>✈️ Nuestra luna de miel</h2>
 
@@ -478,7 +525,7 @@ html {
   </div>
 </div>
 
-<div class="section fade-in">
+<div id="fotos" class="section fade-in">
   <div class="card">
     <h2>📸 Fotos del evento</h2>
 
