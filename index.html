@@ -564,6 +564,48 @@ html {
     font-size: 1.5em;
   }
 }
+.fecha-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0 8px;
+  font-family: 'Playfair Display', serif;
+  color: #3a2e2a;
+}
+
+.fecha-dia {
+  font-size: 3.5em;
+  font-weight: 700;
+  line-height: 1;
+  color: #e76f51;
+}
+
+.fecha-mes, .fecha-anio {
+  font-size: 2em;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.fecha-sep {
+  font-size: 2em;
+  color: #e76f51;
+  opacity: 0.5;
+}
+
+.fecha-sub {
+  font-size: 0.95em;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8b6f5e;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .fecha-dia { font-size: 2.8em; }
+  .fecha-mes, .fecha-anio { font-size: 1.6em; }
+  .fecha-sep { font-size: 1.6em; }
+}
   </style>
 </head>
 
@@ -656,10 +698,16 @@ html {
       <i data-lucide="calendar-heart" width="24" height="24"></i>
       Fecha
     </h2>
-    <p>
-      21 de Noviembre de 2026<br>
-      18:00 puntual
-    </p>
+
+    <div class="fecha-display">
+      <span class="fecha-dia">21</span>
+      <span class="fecha-sep">·</span>
+      <span class="fecha-mes">XI</span>
+      <span class="fecha-sep">·</span>
+      <span class="fecha-anio">2026</span>
+    </div>
+    <p class="fecha-sub">Sábado · 18:00 hs · puntual</p>
+
     <img src="fecha2.jpeg" alt="Calendario del evento">
   </div>
 </div>
@@ -703,7 +751,7 @@ html {
       Queremos que se sientan cómodos y cancheros ✨<br>
       Traje, vestido o look elegante.<br>
       Lo que quieras, pero bien coqueto.<br>
-	  <strong>¡Si venis de blanco Flor te tira a la pileta!</strong>
+	  <strong>¡Si venis de blanco Flora te tira a la pileta!</strong>
     </p>
     <p style="margin-top:15px;">
       <em>Tip:</em> La ceremonia es al aire libre 
