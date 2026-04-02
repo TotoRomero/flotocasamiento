@@ -644,6 +644,23 @@ html {
   width:140px;
   opacity:0.85;
 }
+.card-rsvp{
+ transform:scale(1.02);
+  box-shadow:0 15px 35px rgba(0,0,0,0.12);
+  background:#e76f51;
+}
+
+.card-rsvp::before{
+  content:"";
+  position:absolute;
+  top:-2px;
+  left:-2px;
+  right:-2px;
+  bottom:-2px;
+  border-radius:12px;
+  border:1px solid rgba(232,191,198,0.4);
+  pointer-events:none;
+}
   </style>
 </head>
 
@@ -678,11 +695,11 @@ html {
 
 <nav class="floating-menu">
   <a href="#historia">
-    <i data-lucide="heart" width="18" height="18"></i>
+    <i data-lucide="book-open" width="18" height="18"></i>
     <span class="nav-label">Historia</span>
   </a>
   <a href="#fecha">
-    <i data-lucide="calendar" width="18" height="18"></i>
+    <i data-lucide="calendar-heart" width="18" height="18"></i>
     <span class="nav-label">Fecha</span>
   </a>
   <a href="#lugar">
@@ -701,9 +718,9 @@ html {
     <i data-lucide="gift" width="18" height="18"></i>
     <span class="nav-label">Regalo</span>
   </a>
-  <a href="#fotos">
+  <a href="#Album">
     <i data-lucide="camera" width="18" height="18"></i>
-    <span class="nav-label">Fotos</span>
+    <span class="nav-label">Álbum</span>
   </a>
 </nav>
 
@@ -763,10 +780,9 @@ html {
       <i data-lucide="calendar-heart" width="24" height="24"></i>
       Fecha
     </h2>
-
+    <p class="fecha-sub">21 de Noviembre de 2026</p>
     <p class="fecha-sub">Sábado · 18:00 hs · puntual</p>
-
-    <img src="fecha2.jpeg" alt="Calendario del evento">
+    <img src="fecha2.jpeg" alt="Calendario del evento" style="max-width:250px;">
   </div>
 </div>
 
@@ -822,6 +838,7 @@ html {
 
 <!-- RSVP -->
 <div id="rsvp" class="section fade-in rsvp-section">
+<div class="card card-rsvp">
   <div class="card">
     <h2 class="section-title">
       <i data-lucide="check-circle" width="24" height="24"></i>
@@ -833,15 +850,15 @@ html {
     <div class="info-list">
       <div class="info-item">
         <i data-lucide="clipboard-list" width="18" height="18" class="icon-inline"></i>
-        <span>Te vamos a pedir que nos indiques si necesitás menú especial (Veggie o celíaco)</span>
+        <span>Te vamos a pedir que nos indiques si necesitás menú especial (Veggie o celíaco) <br></span>
       </div>
       <div class="info-item">
         <i data-lucide="navigation-2" width="18" height="18" class="icon-inline"></i>
-        <span>El lugar cuenta con estacionamiento propio. Igual recomendamos venir en Cabify o combis compartidas</span>
+        <span>El lugar cuenta con estacionamiento propio. Igual recomendamos venir en Cabify o combis compartidas <br></span>
       </div>
       <div class="info-item">
         <i data-lucide="user-x" width="18" height="18" class="icon-inline"></i>
-        <span>Evento solo para adultos</span>
+        <span>Evento solo para adultos <br></span>
       </div>
     </div>
     <a class="btn btn-primary btn-icon" href="https://forms.gle/tu-form" target="_blank">
@@ -855,14 +872,14 @@ html {
 <div id="luna" class="section fade-in">
   <div class="card">
     <h2 class="section-title">
-      <i data-lucide="plane" width="24" height="24"></i>
+      <i data-lucide="Regalo" width="24" height="24"></i>
       Nuestro regalo
     </h2>
     <p style="margin-top:15px;">
       El mejor regalo es que nos acompañen en este día tan especial
     </p>
     <p>Pero si además querés ayudarnos a cumplir nuestro próximo sueño…</p>
-    <p>¡Nos encantaría contar con tu aporte para la Luna de miel!</p>
+    <p>¡Nos encantaría contar con su ayuda para mejorar nuestra casa y nuestra Luna de Miel!</p>
     <hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
 <div class="alias-box">
   <div class="alias-header">
@@ -892,18 +909,18 @@ html {
 </div>
 
 <!-- FOTOS -->
-<div id="fotos" class="section fade-in">
+<div id="Album" class="section fade-in">
   <div class="card">
     <h2 class="section-title">
       <i data-lucide="camera" width="24" height="24"></i>
-      Fotos del evento
+      Papparazzis
     </h2>
     <p>¡Escaneá el QR o ingresá con el botón y subí tus fotos de la fiesta!</p>
     <img src="qr.png" alt="QR código para subir fotos" style="max-width:200px;">
     <br>
     <a class="btn btn-icon" href="https://photos.app.goo.gl/7w9BtaCyhyr1gKTo7" target="_blank">
       <i data-lucide="camera" width="16" height="16"></i>
-      Ir al álbum
+      Subir fotos
     </a>
   </div>
 </div>
