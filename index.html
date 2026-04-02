@@ -2,25 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Flora & Toto</title>
-  <!-- Open Graph / WhatsApp preview -->
-<meta property="og:title" content="Flora & Toto 💍" />
-<meta property="og:description" content="¡Nos casamos! 21 de Noviembre de 2026 — Samara Pilar" />
-<meta property="og:image" content="https://totoromero.github.io/flotocasamiento/foto1.jpg" />
-<meta property="og:url" content="https://totoromero.github.io/flotocasamiento/" />
-<meta property="og:type" content="website" />
-
-<!-- WhatsApp usa estas también -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Flora & Toto 💍" />
-<meta name="twitter:description" content="¡Nos casamos! 21 de Noviembre de 2026 — Samara Pilar" />
-<meta name="twitter:image" content="https://totoromero.github.io/flotocasamiento/foto1.jpg" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <title>Flora & Toto</title>
 
+  <!-- Open Graph / WhatsApp -->
+  <meta property="og:title" content="Flora & Toto 💍" />
+  <meta property="og:description" content="¡Nos casamos! 21 de Noviembre de 2026 — Samara Pilar" />
+  <meta property="og:image" content="https://totoromero.github.io/flotocasamiento/foto1.jpg" />
+  <meta property="og:url" content="https://totoromero.github.io/flotocasamiento/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Flora & Toto 💍" />
+  <meta name="twitter:description" content="¡Nos casamos! 21 de Noviembre de 2026 — Samara Pilar" />
+  <meta name="twitter:image" content="https://totoromero.github.io/flotocasamiento/foto1.jpg" />
+
+  <link rel="icon" href="data:image/svg+xml,...">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display...">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins...">
+  <script src="https://unpkg.com/lucide@0.427.0/dist/umd/lucide.min.js"></script>
+  
   <style>
 @keyframes fadePage {
   from { opacity: 0; }
@@ -563,12 +563,86 @@ html {
     gap: 6px;
     font-size: 1.5em;
   }
+  .card:hover {
+    transform: none;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  }
+  .divider img{
+    width:100px;
+  }
+}
+.fecha-sub {
+  font-size: 0.95em;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8b6f5e;
+  margin-bottom: 10px;
+}
+.carousel{
+  position:relative;
+  max-width:650px;
+  margin:auto;
+  overflow:hidden;
 }
 
-@media (max-width: 600px) {
-  .fecha-dia { font-size: 2.8em; }
-  .fecha-mes, .fecha-anio { font-size: 1.6em; }
-  .fecha-sep { font-size: 1.6em; }
+.carousel-track{
+  display:flex;
+  transition:transform 0.5s ease;
+}
+
+.carousel-track img{
+  max-width:100%;
+  max-height:420px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  margin:auto;
+  display:block;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  transition:transform 0.5s ease;
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+.carousel-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,0.8);
+  border:none;
+  font-size:1.8em;
+  padding:6px 12px;
+  cursor:pointer;
+  border-radius:6px;
+}
+
+.carousel-btn.prev{
+  left:10px;
+}
+
+.carousel-btn.next{
+  right:10px;
+}
+.slide{
+  min-width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.divider{
+  width:100%;
+  height:140px;
+  background-image:url("rosa.jpg");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  margin:60px 0;
+}
+
+.divider img{
+  width:140px;
+  opacity:0.85;
 }
   </style>
 </head>
@@ -648,11 +722,38 @@ html {
     </p>
     <p>Hoy queremos celebrarlo con <strong>ustedes</strong> ✨</p>
     <hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
-    <div class="photo-grid">
-      <img src="foto1.jpg" alt="Flora y Toto - foto 1">
-      <img src="foto2.png" alt="Flora y Toto - foto 2">
-    </div>
+	
+	<div class="carousel">
+	  <button class="carousel-btn prev">❮</button>
+<div class="carousel-track">
+
+  <div class="slide">
+    <img src="vino.jpg">
   </div>
+
+  <div class="slide">
+    <img src="cristo.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="escalera.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="lluvia.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="taberna.jpg">
+  </div>
+
+</div>
+	  <button class="carousel-btn next">❯</button>
+	</div>
+  </div>
+</div>
+
+<div class="divider">
 </div>
 
 <!-- FECHA -->
@@ -855,5 +956,41 @@ function copyAlias(btn, text) {
   });
 }
 </script>
-</body>
+<script>
+
+const track = document.querySelector('.carousel-track');
+const slides = document.querySelectorAll('.carousel-track img');
+
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+let index = 0;
+
+function updateCarousel(){
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide(){
+  index = (index + 1) % slides.length;
+  updateCarousel();
+}
+
+function prevSlide(){
+  index = (index - 1 + slides.length) % slides.length;
+  updateCarousel();
+}
+
+nextBtn.addEventListener("click", () => {
+  clearInterval(autoScroll);
+  nextSlide();
+});
+
+prevBtn.addEventListener("click", () => {
+  clearInterval(autoScroll);
+  prevSlide();
+});
+
+let autoScroll = setInterval(nextSlide, 4000);
+
+</script></body>
 </html>
