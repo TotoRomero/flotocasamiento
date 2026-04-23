@@ -158,6 +158,7 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 300;
+  color: white;
   animation: heroSubtitleFade 1s ease forwards;
   animation-delay: 1s;
 }
@@ -284,16 +285,6 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
 
 .section:nth-of-type(even) { background: var(--white); }
 .section:nth-of-type(odd)  { background: var(--cream); }
-
-.section::after {
-  content: "";
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--terracota), transparent);
-  margin: 60px auto 0;
-  opacity: 0.4;
-}
 
 /* fade-in al scroll */
 .fade-in {
@@ -632,19 +623,18 @@ img:hover {
 ═══════════════════════════════════════════ */
 .divider {
   width: 100%;
-  height: 140px;
+  height: 110px;
   background-image: url("rosa.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin: 40px 0;
   position: relative;
 }
 .divider::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(247,237,227,0.18);
+  background: rgba(247,237,227,0.12);
 }
 
 /* ═══════════════════════════════════════════
@@ -678,6 +668,8 @@ footer p:first-child {
 
   .card { padding: 32px 22px; border-radius: var(--radius-md); }
   .card:hover { transform: none; box-shadow: var(--shadow-md); }
+
+  #lugar .card img { display: block; margin-left: auto; margin-right: auto; }
 
   .photo-grid { flex-direction: column; }
   .photo-grid img { width: 100%; height: 200px; }
@@ -813,8 +805,7 @@ footer p:first-child {
   </div>
 </div>
 
-<div class="divider">
-</div>
+<div class="divider"></div>
 
 <!-- FECHA -->
 <div id="fecha" class="section fade-in">
@@ -832,6 +823,8 @@ footer p:first-child {
     Agregar al calendario
   </a>
 </div>
+
+<div class="divider"></div>
 
 <!-- LUGAR -->
 <div id="lugar" class="section fade-in">
@@ -860,9 +853,11 @@ footer p:first-child {
     <a class="btn btn-icon" href="https://maps.app.goo.gl/iecWhLFWfxy5i8A37" target="_blank">
       <i data-lucide="navigation" width="16" height="16"></i>
       Abrir en Google Maps
-    </a><br>
+    </a>
   </div>
 </div>
+
+<div class="divider"></div>
 
 <!-- DRESS CODE -->
 <div id="dresscode" class="section fade-in">
@@ -884,6 +879,8 @@ footer p:first-child {
     </p>
   </div>
 </div>
+
+<div class="divider"></div>
 
 <!-- RSVP -->
 <div id="rsvp" class="section fade-in rsvp-section">
@@ -916,6 +913,8 @@ footer p:first-child {
   </div>
 </div>
 
+<div class="divider"></div>
+
 <!-- REGALO -->
 <div id="luna" class="section fade-in">
   <div class="card">
@@ -925,36 +924,40 @@ footer p:first-child {
     </h2>
     <p style="margin-top:15px;">
       El mejor regalo es que nos acompañen en este día tan especial. Pero si además querés ayudarnos a cumplir nuestro próximo sueño…<br>
-		¡Nos encantaría contar con su ayuda para mejorar nuestra casa y nuestra Luna de Miel!</p>
-		      <i data-lucide="house" width="24" height="24"></i>
-			  <i data-lucide="plane" width="24" height="24"></i>
-    <hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
-<div class="alias-box">
-  <div class="alias-header">
-    <i data-lucide="dollar-sign" width="18" height="18"></i>
-    Alias en dólares
+      ¡Nos encantaría contar con su ayuda para mejorar nuestra casa y nuestra Luna de Miel!
+    </p>
+    <p style="margin-top:8px;">
+      <i data-lucide="house" width="20" height="20" style="vertical-align:middle; color:#e76f51;"></i>
+      &nbsp;
+      <i data-lucide="plane" width="20" height="20" style="vertical-align:middle; color:#e76f51;"></i>
+    </p>
+    <hr style="margin:20px auto; width:50px; border:none; border-top:1px solid #e76f51; opacity:0.3;">
+    <div class="alias-box">
+      <div class="alias-header">
+        <i data-lucide="dollar-sign" width="18" height="18"></i>
+        Alias en dólares
+      </div>
+      <p class="alias">floto.casamiento</p>
+      <button class="alias-copy-btn" onclick="copyAlias(this, 'floto.casamiento')">
+        <i data-lucide="copy" width="14" height="14"></i>
+        Copiar
+      </button>
+    </div>
+    <div class="alias-box">
+      <div class="alias-header">
+        <i data-lucide="banknote" width="18" height="18"></i>
+        Alias en pesos
+      </div>
+      <p class="alias">floto.casamiento.ars</p>
+      <button class="alias-copy-btn" onclick="copyAlias(this, 'floto.casamiento.ars')">
+        <i data-lucide="copy" width="14" height="14"></i>
+        Copiar
+      </button>
+    </div>
   </div>
-  <p class="alias">floto.casamiento</p>
-  <button class="alias-copy-btn" onclick="copyAlias(this, 'floto.casamiento')">
-    <i data-lucide="copy" width="14" height="14"></i>
-    Copiar
-  </button>
 </div>
 
-<div class="alias-box">
-  <div class="alias-header">
-    <i data-lucide="banknote" width="18" height="18"></i>
-    Alias en pesos
-  </div>
-  <p class="alias">floto.casamiento.ars</p>
-  <button class="alias-copy-btn" onclick="copyAlias(this, 'floto.casamiento.ars')">
-    <i data-lucide="copy" width="14" height="14"></i>
-    Copiar
-  </button>
-</div>
-
-  </div>
-</div>
+<div class="divider"></div>
 
 <!-- FOTOS -->
 <div id="Album" class="section fade-in">
