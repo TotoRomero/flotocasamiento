@@ -283,7 +283,7 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
   padding: 80px 20px;
 }
 
-.section:nth-of-type(even) { background: var(--white); }
+.section:nth-of-type(even) { background: var(--cream); }
 .section:nth-of-type(odd)  { background: var(--cream); }
 
 /* fade-in al scroll */
@@ -334,7 +334,7 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
 .section-title svg { color: var(--terracota); flex-shrink: 0; }
 
 /* ── Historia section ────────────── */
-.historia-section { background: linear-gradient(160deg, var(--cream), var(--cream-mid)); }
+.historia-section { background: var(--cream); }
 
 /* ═══════════════════════════════════════════
    BOTONES
@@ -516,8 +516,6 @@ img:hover {
 /* ═══════════════════════════════════════════
    RSVP SECTION
 ═══════════════════════════════════════════ */
-.rsvp-section { background: linear-gradient(160deg, #fdf0e8, #fce8db) !important; }
-
 .rsvp-section .card {
   border-top: 4px solid var(--terracota);
   background: var(--white);
@@ -817,11 +815,12 @@ footer p:first-child {
     <p class="fecha-sub">21 de Noviembre de 2026</p>
     <p class="fecha-sub">Sábado · 18:00 hs · puntual</p>
     <img src="fecha2.jpeg" alt="Calendario del evento" style="max-width:250px;">
+    <br>
+    <a class="btn btn-icon" href="evento.ics">
+      <i data-lucide="calendar-plus"></i>
+      Agregar al calendario
+    </a>
   </div>
-  <a class="btn btn-icon" href="evento.ics">
-    <i data-lucide="calendar-plus"></i>
-    Agregar al calendario
-  </a>
 </div>
 
 <div class="divider"></div>
@@ -833,7 +832,7 @@ footer p:first-child {
       <i data-lucide="map-pin" width="24" height="24"></i>
       Lugar
     </h2>
-	<img src="samara.png" alt="Samara" style="max-width:350px">
+	<img src="samara.png" alt="Samara" style="max-width:350px; display:block; margin:20px auto 0;">
 	<p>
       <strong>Samara Pilar</strong><br>
       Chile 2675 (Km 47 de Panamericana Ramal Pilar), Del Viso
