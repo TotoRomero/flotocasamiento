@@ -26,9 +26,8 @@ const CONFIG = {
   // 1. Abrí tu Google Form → ⋮ (los tres puntos) → "Insertar"
   // 2. Copiá la URL que está dentro del atributo src="..." del <iframe>
   // 3. Pegala acá abajo, reemplazando el placeholder.
-  googleFormEmbedUrl: "https://docs.google.com/forms/d/e/TU_FORM_ID/viewform?embedded=true",
+  googleFormEmbedUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform?embedded=true",
 };
-
 
 document.addEventListener("DOMContentLoaded", function () {
 
