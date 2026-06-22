@@ -29,6 +29,7 @@ const CONFIG = {
   googleFormEmbedUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform?embedded=true",
 };
 
+
 document.addEventListener("DOMContentLoaded", function () {
 
   // Inicializar íconos
