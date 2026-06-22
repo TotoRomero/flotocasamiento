@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flora & Toto</title>
-  
+
   <!-- Open Graph / WhatsApp -->
   <meta property="og:locale" content="es_AR">
   <meta property="og:site_name" content="Casamiento Flora y Toto">
@@ -18,710 +18,17 @@
   <meta name="twitter:description" content="¡Nos casamos! 21 de Noviembre de 2026 — Samara Pilar" />
   <meta name="twitter:image" content="https://totoromero.github.io/flotocasamiento/foto1.jpg" />
 
-	<link rel="icon" type="image/png" href="icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="icon.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="icon.png">
-	<link rel="apple-touch-icon" href="favicon.png">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Tipografías y librería de íconos -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@0.427.0/dist/umd/lucide.min.js"></script>
-  
-  <style>
 
-/* ═══════════════════════════════════════════
-   VARIABLES & RESET
-═══════════════════════════════════════════ */
-:root {
-  --terracota:     #e76f51;
-  --terracota-dark:#c95a3d;
-  --terracota-soft:#f4a261;
-  --cream:         #fffaf5;
-  --cream-mid:     #fdf1e7;
-  --cream-dark:    #f1e3d3;
-  --brown:         #3a2e2a;
-  --brown-mid:     #6b4f3a;
-  --brown-light:   #8b6f5e;
-  --white:         #ffffff;
-  --shadow-sm:     0 4px 16px rgba(58,46,42,0.08);
-  --shadow-md:     0 12px 32px rgba(58,46,42,0.12);
-  --shadow-lg:     0 20px 48px rgba(58,46,42,0.16);
-  --radius-sm:     10px;
-  --radius-md:     18px;
-  --radius-lg:     28px;
-}
-
-html { scroll-behavior: smooth; }
-
-*, *::before, *::after { box-sizing: border-box; }
-
-@keyframes fadePage {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-body {
-  animation: fadePage 0.8s ease both;
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(160deg, #f7ede3 0%, #ecddd0 100%);
-  color: var(--brown);
-  text-align: center;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ═══════════════════════════════════════════
-   TIPOGRAFÍA
-═══════════════════════════════════════════ */
-h1, h2 { font-family: 'Playfair Display', serif; }
-
-h1 {
-  margin: 0;
-  font-size: 3em;
-  letter-spacing: 1px;
-}
-
-h2 {
-  font-size: 1.85em;
-  margin-bottom: 6px;
-  letter-spacing: 0.3px;
-  color: var(--brown);
-}
-
-h2::after {
-  content: "";
-  display: block;
-  width: 36px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--terracota), var(--terracota-soft));
-  margin: 10px auto 18px;
-  border-radius: 2px;
-  opacity: 0.7;
-}
-
-p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
-
-/* ═══════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════ */
-.hero {
-  position: relative;
-  height: 100svh;
-  min-height: 480px;
-  max-height: 700px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  background: url('foto1.jpg') center 38% / cover no-repeat;
-  overflow: hidden;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.15) 0%,
-    rgba(0,0,0,0.35) 60%,
-    rgba(58,46,42,0.55) 100%
-  );
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to bottom, transparent, #f7ede3);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 20px;
-}
-
-.hero h1 {
-  font-size: clamp(2.4em, 7vw, 4.2em);
-  margin: 0;
-  letter-spacing: 3px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-  opacity: 0;
-  animation: heroFadeScale 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.subtitle {
-  font-size: clamp(1em, 3vw, 1.3em);
-  margin-top: 10px;
-  opacity: 0;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 300;
-  color: white;
-  animation: heroSubtitleFade 1s ease forwards;
-  animation-delay: 1s;
-}
-
-@keyframes heroFadeScale {
-  from { opacity:0; transform:scale(0.88); letter-spacing:10px; }
-  to   { opacity:1; transform:scale(1);    letter-spacing:3px; }
-}
-@keyframes heroSubtitleFade {
-  from { opacity:0; transform:translateY(12px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-@keyframes heroCountdownFade {
-  from { opacity:0; transform:translateY(12px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-
-/* countdown */
-.countdown-box {
-  opacity: 0;
-  animation: heroCountdownFade 1s ease forwards;
-  animation-delay: 1.6s;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.time {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  padding: 14px 18px;
-  border-radius: var(--radius-sm);
-  backdrop-filter: blur(8px);
-  min-width: 72px;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-.time:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,0.2);
-}
-.time span {
-  display: block;
-  font-size: 1.6em;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-}
-.time small {
-  font-size: 0.72em;
-  opacity: 0.85;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  display: block;
-  margin-top: 4px;
-}
-
-@media (max-width: 600px) {
-  .countdown-box { gap: 8px; }
-  .time { min-width: 56px; padding: 10px 12px; }
-  .time span { font-size: 1.2em; }
-  .time small { font-size: 0.65em; }
-}
-
-/* ═══════════════════════════════════════════
-   NAVEGACIÓN
-═══════════════════════════════════════════ */
-.floating-menu {
-  position: sticky;
-  top: 0;
-  background: rgba(255,250,245,0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 10px 20px;
-  box-shadow: 0 2px 16px rgba(58,46,42,0.08);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.floating-menu a {
-  text-decoration: none;
-  color: var(--brown-mid);
-  font-size: 0.78em;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  position: relative;
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  transition: color 0.2s ease, background 0.2s ease;
-}
-
-.floating-menu a:hover,
-.floating-menu a.active {
-  color: var(--terracota);
-  background: rgba(231,111,81,0.08);
-}
-
-.floating-menu a svg {
-  color: var(--terracota);
-  transition: transform 0.25s ease;
-}
-.floating-menu a:hover svg { transform: scale(1.15); }
-
-.floating-menu .nav-label { font-size: 0.72em; }
-
-.floating-menu a {
-  position: relative; /* asegura que el badge se posicione bien */
-}
-
-.nav-badge {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  background: var(--terracota);
-  color: white;
-  font-size: 0.6em;
-  font-weight: 700;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  box-shadow: 0 2px 6px rgba(231,111,81,0.5);
-  animation: badgePulse 2s ease-in-out infinite;
-}
-
-@keyframes badgePulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 2px 6px rgba(231,111,81,0.5); }
-  50%       { transform: scale(1.15); box-shadow: 0 2px 10px rgba(231,111,81,0.7); }
-}
-
-@media (max-width: 600px) {
-  .floating-menu { gap: 2px; padding: 8px 6px; }
-  .floating-menu a { font-size: 0.68em; padding: 5px 7px; }
-}
-
-/* ═══════════════════════════════════════════
-   SECCIONES
-═══════════════════════════════════════════ */
-.section {
-  padding: 80px 20px;
-}
-
-.section:nth-of-type(even) { background: var(--cream); }
-.section:nth-of-type(odd)  { background: var(--cream); }
-
-/* fade-in al scroll */
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ═══════════════════════════════════════════
-   CARDS
-═══════════════════════════════════════════ */
-.card {
-  max-width: 520px;
-  margin: auto;
-  padding: 44px 40px;
-  border-radius: var(--radius-lg);
-  background: var(--white);
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(241,227,211,0.6);
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-}
-
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-}
-
-/* ── Títulos de card ─────────────── */
-.section-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 4px;
-}
-.section-title svg { color: var(--terracota); flex-shrink: 0; }
-
-/* ── Historia section ────────────── */
-.historia-section { background: var(--cream); }
-
-/* ═══════════════════════════════════════════
-   BOTONES
-═══════════════════════════════════════════ */
-.btn {
-  display: inline-block;
-  margin: 10px 6px;
-  padding: 13px 26px;
-  background: var(--terracota);
-  color: white;
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-weight: 500;
-  font-size: 0.92em;
-  transition: all 0.25s ease;
-  letter-spacing: 0.4px;
-  border: none;
-  cursor: pointer;
-}
-.btn:hover {
-  background: var(--terracota-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(231,111,81,0.35);
-}
-
-.btn-primary {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--terracota-soft), var(--terracota));
-  font-size: 1.1em;
-  padding: 16px 32px;
-  border-radius: var(--radius-md);
-  margin-top: 22px;
-  box-shadow: 0 10px 28px rgba(231,111,81,0.38);
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.25s ease;
-  letter-spacing: 0.3px;
-}
-.btn-primary:hover {
-  background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px rgba(231,111,81,0.48);
-}
-
-.btn-icon {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.btn-icon svg { flex-shrink: 0; }
-
-/* ═══════════════════════════════════════════
-   IMÁGENES
-═══════════════════════════════════════════ */
-img {
-  max-width: 100%;
-  border-radius: var(--radius-md);
-  margin-top: 20px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-img:hover {
-  transform: scale(1.02);
-  box-shadow: var(--shadow-md);
-}
-
-.photo-grid {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-.photo-grid img {
-  width: 50%;
-  height: 250px;
-  object-fit: cover;
-  filter: brightness(0.96) saturate(1.05);
-}
-
-/* ═══════════════════════════════════════════
-   FECHA
-═══════════════════════════════════════════ */
-.fecha-sub {
-  font-size: 0.9em;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--brown-light);
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-/* ═══════════════════════════════════════════
-   INFO ITEMS (lugar, rsvp)
-═══════════════════════════════════════════ */
-.info-list { text-align: left; margin-top: 18px; }
-
-.info-item {
-  margin: 12px 0;
-  font-size: 0.93em;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  background: var(--cream);
-  border: 1px solid var(--cream-dark);
-  transition: background 0.2s ease;
-}
-.info-item:hover { background: var(--cream-mid); }
-.info-item .icon-inline {
-  flex-shrink: 0;
-  margin-top: 2px;
-  color: var(--terracota);
-}
-
-/* ═══════════════════════════════════════════
-   ALIAS / REGALO
-═══════════════════════════════════════════ */
-.alias-box {
-  margin-top: 16px;
-  padding: 20px;
-  background: linear-gradient(135deg, var(--cream), var(--cream-mid));
-  border-radius: var(--radius-md);
-  border: 1px solid var(--cream-dark);
-  transition: box-shadow 0.2s ease;
-}
-.alias-box:hover { box-shadow: var(--shadow-sm); }
-
-.alias-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-weight: 600;
-  font-size: 0.9em;
-  letter-spacing: 0.5px;
-  color: var(--brown-mid);
-  text-transform: uppercase;
-}
-.alias-header svg { color: var(--terracota); }
-
-.alias {
-  font-size: 1.15em;
-  font-weight: 600;
-  margin: 8px 0;
-  letter-spacing: 1.5px;
-  color: var(--brown);
-  font-family: 'Playfair Display', serif;
-}
-
-.alias-copy-btn {
-  background: none;
-  border: 1.5px solid var(--terracota);
-  color: var(--terracota);
-  border-radius: var(--radius-sm);
-  padding: 6px 14px;
-  font-size: 0.8em;
-  font-weight: 500;
-  cursor: pointer;
-  margin-top: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.3px;
-}
-.alias-copy-btn:hover {
-  background: var(--terracota);
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(231,111,81,0.3);
-}
-.alias-copy-btn.copied {
-  background: #4caf50;
-  border-color: #4caf50;
-  color: white;
-}
-
-/* ═══════════════════════════════════════════
-   RSVP SECTION
-═══════════════════════════════════════════ */
-.rsvp-section .card {
-  border-top: 4px solid var(--terracota);
-  background: var(--white);
-}
-
-/* ═══════════════════════════════════════════
-   CARRUSEL
-═══════════════════════════════════════════ */
-.carousel {
-  position: relative;
-  max-width: 620px;
-  margin: 24px auto 0;
-  overflow: hidden;
-  touch-action: pan-y;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.slide {
-  min-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--cream-dark);
-}
-
-.slide img {
-  max-width: 100%;
-  max-height: 400px;
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 0;
-  margin: 0;
-  opacity: 0;
-  transform: scale(1.04);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  box-shadow: none;
-}
-.slide.active img {
-  opacity: 1;
-  transform: scale(1);
-}
-.slide img:hover { transform: scale(1.01); }
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,250,245,0.88);
-  border: none;
-  font-size: 1.4em;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
-  z-index: 10;
-  color: var(--brown);
-}
-.carousel-btn:hover {
-  background: var(--white);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-50%) scale(1.08);
-}
-.carousel-btn.prev { left: 12px; }
-.carousel-btn.next { right: 12px; }
-
-/* puntos indicadores */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 7px;
-  margin-top: 14px;
-}
-.carousel-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--cream-dark);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.3s ease;
-}
-.carousel-dot.active {
-  background: var(--terracota);
-  width: 22px;
-  border-radius: 4px;
-}
-
-/* ═══════════════════════════════════════════
-   DIVIDER
-═══════════════════════════════════════════ */
-.divider {
-  width: 100%;
-  height: 110px;
-  background-image: url("rosa.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-}
-.divider::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(247,237,227,0.12);
-}
-
-/* ═══════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════ */
-footer {
-  margin-top: 0;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, var(--cream-dark), var(--cream-mid));
-  border-top: 1px solid rgba(231,111,81,0.15);
-}
-footer p {
-  margin: 4px 0;
-  font-size: 0.9em;
-  color: var(--brown-light);
-}
-footer p:first-child {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2em;
-  color: var(--brown);
-}
-
-/* ═══════════════════════════════════════════
-   MOBILE
-═══════════════════════════════════════════ */
-@media (max-width: 600px) {
-  .section { padding: 56px 16px; }
-
-  .hero h1 { font-size: 2.3em; }
-  .subtitle { font-size: 1em; }
-
-  .card { padding: 32px 22px; border-radius: var(--radius-md); }
-  .card:hover { transform: none; box-shadow: var(--shadow-md); }
-
-  #lugar .card img { display: block; margin-left: auto; margin-right: auto; }
-
-  .photo-grid { flex-direction: column; }
-  .photo-grid img { width: 100%; height: 200px; }
-
-  .section-title {
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    font-size: 1.45em;
-  }
-  .info-list { text-align: left; }
-  .info-item { text-align: left; }
-
-  .btn, .btn-primary, .btn-icon {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: 10px auto;
-    width: fit-content;
-  }
-
-  .divider img { width: 100px; }
-
-  .slide img { height: 260px; }
-}
-  </style>
+  <!-- Estilos propios del sitio -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -748,7 +55,6 @@ footer p:first-child {
         <span id="seconds">0</span>
         <small>seg</small>
       </div>
-
     </div>
   </div>
 </header>
@@ -800,52 +106,23 @@ footer p:first-child {
     </p>
     <p>Hoy queremos celebrarlo con <strong>ustedes</strong> ✨</p>
     <hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
-	
-	<div class="carousel">
-	  <button class="carousel-btn prev">❮</button>
-<div class="carousel-track">
 
-  <div class="slide">
-    <img src="taberna.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="vino.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="cristo.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="escalera.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="lluvia.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="uru.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="argentina.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="cascada.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="vinoplaya.jpg">
-  </div>
-
-
-</div>
-	  <button class="carousel-btn next">❯</button>
-	</div>
-  <div class="carousel-dots" id="carouselDots"></div>
+    <div class="carousel">
+      <button class="carousel-btn prev">❮</button>
+      <div class="carousel-track">
+        <div class="slide"><img src="taberna.jpg" alt="Taberna de Gilgamesh"></div>
+        <div class="slide"><img src="vino.jpg" alt="Brindis"></div>
+        <div class="slide"><img src="cristo.jpg" alt="Viaje"></div>
+        <div class="slide"><img src="escalera.jpg" alt="Escalera"></div>
+        <div class="slide"><img src="lluvia.jpg" alt="Viaje lluvioso"></div>
+        <div class="slide"><img src="uru.jpg" alt="Uruguay"></div>
+        <div class="slide"><img src="argentina.jpg" alt="Argentina"></div>
+        <div class="slide"><img src="cascada.jpg" alt="Cascada"></div>
+        <div class="slide"><img src="vinoplaya.jpg" alt="Playa"></div>
+      </div>
+      <button class="carousel-btn next">❯</button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
   </div>
 </div>
 
@@ -878,15 +155,15 @@ footer p:first-child {
       <i data-lucide="map-pin" width="24" height="24"></i>
       Lugar
     </h2>
-	<img src="samara.png" alt="Samara" style="max-width:350px; display:block; margin:20px auto 0;">
-	<p>
+    <img src="samara.png" alt="Samara" style="max-width:350px; display:block; margin:20px auto 0;">
+    <p>
       <strong>Samara Pilar</strong><br>
       Chile 2675 (Km 47 de Panamericana Ramal Pilar), Del Viso
     </p>
-	<div class="info-item">
-        <i data-lucide="car" width="18" height="18" class="icon-inline"></i>
-        <span>¿Cómo llego? <br></span>
-      </div>
+    <div class="info-item">
+      <i data-lucide="car" width="18" height="18" class="icon-inline"></i>
+      <span>¿Cómo llego?</span>
+    </div>
     <iframe
       src="https://www.google.com/maps?q=Samara+Pilar&output=embed"
       width="100%"
@@ -916,10 +193,10 @@ footer p:first-child {
       Queremos que se sientan cómodos y cancheros ✨<br>
       Traje, vestido o look elegante.<br>
       Lo que quieras, pero bien coqueto.<br>
-	  <strong>¡Si venis de blanco Flora te tira a la pileta!</strong>
+      <strong>¡Si venis de blanco Flora te tira a la pileta!</strong>
     </p>
     <p style="margin-top:15px;">
-      <em>Tip:</em> La ceremonia es al aire libre 
+      <em>Tip:</em> La ceremonia es al aire libre
       <i data-lucide="tree-pine" width="16" height="16" style="vertical-align:middle; color:#e76f51;"></i>
     </p>
   </div>
@@ -951,10 +228,12 @@ footer p:first-child {
         <span>Evento solo para adultos</span>
       </div>
     </div>
-    <a class="btn btn-primary btn-icon" href="https://forms.gle/tu-form" target="_blank">
+
+    <!-- Este botón abre el modal con el Google Form embebido (ver script.js) -->
+    <button id="rsvpTrigger" class="btn btn-primary btn-icon" type="button">
       <i data-lucide="heart-handshake" width="20" height="20"></i>
       Confirmar que venís
-    </a>
+    </button>
   </div>
 </div>
 
@@ -1026,147 +305,29 @@ footer p:first-child {
   <p>K-Web Design © - 2026 Argentina</p>
 </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", function(){
+<!-- ═══════════════════════════════════════════
+     MODAL DE RSVP — Google Form embebido
+     Se abre al tocar "Confirmar que venís"
+═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="rsvpModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>
+        <i data-lucide="heart-handshake" width="20" height="20"></i>
+        Confirmar asistencia
+      </h3>
+      <button class="modal-close" id="rsvpModalClose" type="button" aria-label="Cerrar">
+        <i data-lucide="x" width="18" height="18"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- El src se carga recién al abrir el modal, ver script.js -->
+      <iframe id="rsvpFormIframe" title="Formulario de confirmación de asistencia" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
 
-  // Inicializar íconos
-  lucide.createIcons();
-
-  // ── Countdown ──────────────────────────────────────────────
-  const weddingDate = new Date("Nov 21, 2026 18:00:00").getTime();
-
-  function updateCountdown() {
-    const now  = new Date().getTime();
-    const dist = weddingDate - now;
-    if(dist < 0) return;
-    document.getElementById("days").innerText    = Math.floor(dist / 86400000);
-    document.getElementById("hours").innerText   = Math.floor((dist / 3600000) % 24);
-    document.getElementById("minutes").innerText = Math.floor((dist / 60000) % 60);
-    document.getElementById("seconds").innerText = Math.floor((dist / 1000) % 60);
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-
-  // ── Scroll fade-in ────────────────────────────────────────
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in, .card').forEach(el => observer.observe(el));
-
-
-  // ── Copiar alias ──────────────────────────────────────────
-  window.copyAlias = function(btn, text){
-    navigator.clipboard.writeText(text).then(() => {
-      btn.classList.add('copied');
-      btn.innerHTML = '<i data-lucide="check" width="14" height="14"></i> ¡Copiado!';
-      lucide.createIcons();
-      setTimeout(() => {
-        btn.classList.remove('copied');
-        btn.innerHTML = '<i data-lucide="copy" width="14" height="14"></i> Copiar';
-        lucide.createIcons();
-      }, 2000);
-    });
-  };
-
-
-  // ── Carrusel ──────────────────────────────────────────────
-  const track    = document.querySelector('.carousel-track');
-  const slideEls = document.querySelectorAll('.slide');
-  const nextBtn  = document.querySelector('.carousel-btn.next');
-  const prevBtn  = document.querySelector('.carousel-btn.prev');
-  const carousel = document.querySelector('.carousel');
-  const dotsContainer = document.getElementById('carouselDots');
-
-  if(track && slideEls.length > 0){
-
-    let index = 0;
-    let autoScroll;
-
-    // Crear dots
-    slideEls.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Foto ${i + 1}`);
-      dot.addEventListener('click', () => { index = i; updateCarousel(); });
-      dotsContainer && dotsContainer.appendChild(dot);
-    });
-
-    function updateDots(){
-      document.querySelectorAll('.carousel-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === index);
-      });
-    }
-
-    function updateCarousel(){
-      track.style.transform = `translateX(-${index * 100}%)`;
-      slideEls.forEach((s, i) => s.classList.toggle('active', i === index));
-      updateDots();
-    }
-
-    function nextSlide(){
-      index = (index + 1) % slideEls.length;
-      updateCarousel();
-    }
-
-    function prevSlide(){
-      index = (index - 1 + slideEls.length) % slideEls.length;
-      updateCarousel();
-    }
-
-    updateCarousel();
-
-    if(nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if(prevBtn) prevBtn.addEventListener('click', prevSlide);
-
-    autoScroll = setInterval(nextSlide, 4000);
-
-    carousel.addEventListener("mouseenter", () => clearInterval(autoScroll));
-    carousel.addEventListener("mouseleave", () => { autoScroll = setInterval(nextSlide, 4000); });
-
-    let touchStartX = 0;
-    carousel.addEventListener("touchstart", e => {
-      touchStartX = e.changedTouches[0].screenX;
-      clearInterval(autoScroll);
-    }, { passive: true });
-
-    carousel.addEventListener("touchend", e => {
-      const diff = touchStartX - e.changedTouches[0].screenX;
-      if(Math.abs(diff) > 40){ diff > 0 ? nextSlide() : prevSlide(); }
-      autoScroll = setInterval(nextSlide, 4000);
-    }, { passive: true });
-  }
-
-
-  // ── Nav activo al hacer scroll ────────────────────────────
-  const sections = document.querySelectorAll("section, .section");
-  const navLinks = document.querySelectorAll(".floating-menu a");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(sec => {
-      if(window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute("id");
-    });
-    navLinks.forEach(a => {
-      a.classList.remove("active");
-      if(a.getAttribute("href") === "#" + current) a.classList.add("active");
-    });
-  });
-
-  // ── Badge: se oculta cuando el usuario hace click en Confirmar ──
-  const rsvpBtn = document.querySelector('#rsvp .btn-primary');
-  const badge   = document.querySelector('.nav-badge');
-  if(rsvpBtn && badge){
-    rsvpBtn.addEventListener('click', () => {
-      badge.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-      badge.style.opacity = '0';
-      badge.style.transform = 'scale(0)';
-      setTimeout(() => badge.remove(), 300);
-    });
-  }
-
-});
-</script>
+<!-- Lógica propia del sitio -->
+<script src="script.js"></script>
 </body>
 </html>
