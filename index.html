@@ -234,6 +234,14 @@
       <i data-lucide="heart-handshake" width="20" height="20"></i>
       Confirmar que venís
     </button>
+
+    <!-- Respaldo directo, siempre visible, por si el modal/iframe falla en
+         algún navegador (ej. el navegador interno de WhatsApp o Instagram) -->
+    <p style="margin-top:14px; font-size:0.82em;">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform" target="_blank" rel="noopener" style="color:var(--brown-light); text-decoration:underline;">
+        ¿No se abre? Completá el formulario acá
+      </a>
+    </p>
   </div>
 </div>
 
@@ -321,6 +329,15 @@
       </button>
     </div>
     <div class="modal-body">
+      <!-- Aviso de respaldo: aparece solo si el iframe tarda en cargar
+           (ver script.js, sección 6). Cubre el caso de navegadores
+           que bloquean formularios embebidos de Google (ej. WhatsApp/IG). -->
+      <p id="rsvpIframeFallback" style="display:none; margin:16px; font-size:0.85em; text-align:center;">
+        El formulario está tardando en cargar acá adentro.<br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform" target="_blank" rel="noopener" class="btn" style="margin-top:8px;">
+          Abrir formulario en otra pestaña
+        </a>
+      </p>
       <!-- El src se carga recién al abrir el modal, ver script.js -->
       <iframe id="rsvpFormIframe" title="Formulario de confirmación de asistencia" loading="lazy"></iframe>
     </div>
