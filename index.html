@@ -229,19 +229,14 @@
       </div>
     </div>
 
-    <!-- Este botón abre el modal con el Google Form embebido (ver script.js) -->
-    <button id="rsvpTrigger" class="btn btn-primary btn-icon" type="button">
+    <!-- Abre el Google Form directo en una pestaña nueva.
+         (Antes esto abría un modal con el form embebido en un iframe,
+         pero muchos navegadores bloquean Forms embebidos de terceros
+         y queda en blanco. Un link directo funciona siempre.) -->
+    <a id="rsvpTrigger" class="btn btn-primary btn-icon" href="https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform" target="_blank" rel="noopener">
       <i data-lucide="heart-handshake" width="20" height="20"></i>
       Confirmar que venís
-    </button>
-
-    <!-- Respaldo directo, siempre visible, por si el modal/iframe falla en
-         algún navegador (ej. el navegador interno de WhatsApp o Instagram) -->
-    <p style="margin-top:14px; font-size:0.82em;">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform" target="_blank" rel="noopener" style="color:var(--brown-light); text-decoration:underline;">
-        ¿No se abre? Completá el formulario acá
-      </a>
-    </p>
+    </a>
   </div>
 </div>
 
@@ -312,37 +307,6 @@
   <p>¡Los esperamos! ❤️</p>
   <p>K-Web Design © - 2026 Argentina</p>
 </footer>
-
-<!-- ═══════════════════════════════════════════
-     MODAL DE RSVP — Google Form embebido
-     Se abre al tocar "Confirmar que venís"
-═══════════════════════════════════════════ -->
-<div class="modal-overlay" id="rsvpModal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h3>
-        <i data-lucide="heart-handshake" width="20" height="20"></i>
-        Confirmar asistencia
-      </h3>
-      <button class="modal-close" id="rsvpModalClose" type="button" aria-label="Cerrar">
-        <i data-lucide="x" width="18" height="18"></i>
-      </button>
-    </div>
-    <div class="modal-body">
-      <!-- Aviso de respaldo: aparece solo si el iframe tarda en cargar
-           (ver script.js, sección 6). Cubre el caso de navegadores
-           que bloquean formularios embebidos de Google (ej. WhatsApp/IG). -->
-      <p id="rsvpIframeFallback" style="display:none; margin:16px; font-size:0.85em; text-align:center;">
-        El formulario está tardando en cargar acá adentro.<br>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform" target="_blank" rel="noopener" class="btn" style="margin-top:8px;">
-          Abrir formulario en otra pestaña
-        </a>
-      </p>
-      <!-- El src se carga recién al abrir el modal, ver script.js -->
-      <iframe id="rsvpFormIframe" title="Formulario de confirmación de asistencia" loading="lazy"></iframe>
-    </div>
-  </div>
-</div>
 
 <!-- Lógica propia del sitio -->
 <script src="script.js"></script>

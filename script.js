@@ -9,7 +9,7 @@
    3. Copiar alias
    4. Carrusel de fotos
    5. Nav activo al hacer scroll
-   6. Modal de RSVP (Google Form embebido)
+   6. RSVP — ocultar badge del menú al confirmar
    ───────────────────────────────────────────────────────────
    NOTA DE LA CORRECCIÓN (ver chat):
    Cada sección ahora corre dentro de su propio try/catch.
@@ -30,16 +30,9 @@ const CONFIG = {
   // Fecha y hora exacta del casamiento (usada por el countdown)
   weddingDate: "Nov 21, 2026 18:00:00",
 
-  // URL de embed de tu Google Form para el RSVP.
-  // Cómo conseguirla:
-  // 1. Abrí tu Google Form → ⋮ (los tres puntos) → "Insertar"
-  // 2. Copiá la URL que está dentro del atributo src="..." del <iframe>
-  // 3. Pegala acá abajo, reemplazando el placeholder.
-  googleFormEmbedUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform?embedded=true",
-
-  // Misma URL del form pero SIN ?embedded=true, para el link
-  // de respaldo "abrir en pestaña nueva" si el iframe no carga.
-  googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform",
+  // El link al Google Form del RSVP ahora está puesto directo en el
+  // href del botón "Confirmar que venís" en index.html (no acá), porque
+  // se abre en pestaña nueva en vez de embebido — ver nota en el chat.
 };
 
 
@@ -214,85 +207,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* ───────────────────────────────────────────
-     6. MODAL DE RSVP (Google Form embebido)
-     Esta sección es la más importante del sitio:
-     queda aislada en su propio try/catch para
-     garantizar que el botón SIEMPRE quede activo,
-     pase lo que pase en las secciones anteriores.
+     6. RSVP — ocultar el badge "1" del menú
+     una vez que el invitado toca "Confirmar que
+     venís" (ahora es un link directo al Google
+     Form en pestaña nueva, sin modal ni iframe,
+     para evitar que navegadores bloqueen el form
+     embebido — ver explicación en el chat).
   ─────────────────────────────────────────── */
   try {
     const rsvpTrigger = document.getElementById('rsvpTrigger');
-    const modalOverlay = document.getElementById('rsvpModal');
-    const modalClose = document.getElementById('rsvpModalClose');
-    const modalIframe = document.getElementById('rsvpFormIframe');
     const navBadge = document.querySelector('.nav-badge');
-    const iframeFallback = document.getElementById('rsvpIframeFallback');
 
-    function openRsvpModal() {
-      // Cargar el iframe recién al abrir (mejor performance inicial de la página)
-      if (modalIframe && !modalIframe.src) {
-        modalIframe.src = CONFIG.googleFormEmbedUrl;
-      }
-      modalOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-
-      // Si en unos segundos el iframe no terminó de cargar (algunos
-      // navegadores in-app, como el de WhatsApp/Instagram, bloquean
-      // el embed), mostramos el link de respaldo para abrirlo aparte.
-      if (iframeFallback) {
-        iframeFallback.style.display = 'none';
-        clearTimeout(window._rsvpFallbackTimer);
-        window._rsvpFallbackTimer = setTimeout(() => {
-          iframeFallback.style.display = 'block';
-        }, 4000);
-      }
-
-      // El badge "1" del menú ya cumplió su función de llamar la atención
-      if (navBadge) {
+    if (rsvpTrigger && navBadge) {
+      rsvpTrigger.addEventListener('click', () => {
         navBadge.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         navBadge.style.opacity = '0';
         navBadge.style.transform = 'scale(0)';
         setTimeout(() => navBadge.remove(), 300);
-      }
-    }
-
-    function closeRsvpModal() {
-      modalOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-      clearTimeout(window._rsvpFallbackTimer);
-    }
-
-    if (rsvpTrigger && modalOverlay) {
-      rsvpTrigger.addEventListener('click', openRsvpModal);
-    } else {
-      console.error("No se encontró el botón de RSVP o el modal en el HTML.");
-    }
-
-    if (modalClose) modalClose.addEventListener('click', closeRsvpModal);
-
-    // Si el iframe efectivamente carga, ocultamos el aviso de respaldo
-    if (modalIframe) {
-      modalIframe.addEventListener('load', () => {
-        clearTimeout(window._rsvpFallbackTimer);
-        if (iframeFallback) iframeFallback.style.display = 'none';
       });
     }
-
-    // Cerrar al hacer click fuera de la caja blanca
-    if (modalOverlay) {
-      modalOverlay.addEventListener('click', e => {
-        if (e.target === modalOverlay) closeRsvpModal();
-      });
-    }
-
-    // Cerrar con la tecla Escape
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('open')) {
-        closeRsvpModal();
-      }
-    });
   } catch (err) {
-    console.error("Error configurando el modal de RSVP:", err);
+    console.error("Error ocultando el badge de RSVP:", err);
   }
 
 });
