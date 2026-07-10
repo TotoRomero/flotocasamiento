@@ -207,27 +207,136 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* ───────────────────────────────────────────
-     6. RSVP — ocultar el badge "1" del menú
-     una vez que el invitado toca "Confirmar que
-     venís" (ahora es un link directo al Google
-     Form en pestaña nueva, sin modal ni iframe,
-     para evitar que navegadores bloqueen el form
-     embebido — ver explicación en el chat).
+     6. MODAL DE RSVP — Formulario nativo
+        con persistencia en Supabase
   ─────────────────────────────────────────── */
   try {
-    const rsvpTrigger = document.getElementById('rsvpTrigger');
-    const navBadge = document.querySelector('.nav-badge');
 
-    if (rsvpTrigger && navBadge) {
-      rsvpTrigger.addEventListener('click', () => {
+    // ── Configuración Supabase ────────────────
+    const SUPABASE_URL = "https://mizhkpzzldrluyldrpzl.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_Z3QrZ6BcHzjOy_c8xaIoJA_1B_Rl_0g";
+
+    // ── Referencias DOM ───────────────────────
+    const rsvpTrigger     = document.getElementById('rsvpTrigger');
+    const modalOverlay    = document.getElementById('rsvpModal');
+    const modalClose      = document.getElementById('rsvpModalClose');
+    const navBadge        = document.querySelector('.nav-badge');
+
+    const rsvpForm        = document.getElementById('rsvpForm');
+    const rsvpError       = document.getElementById('rsvpError');
+    const rsvpSubmit      = document.getElementById('rsvpSubmit');
+    const closeSuccess    = document.getElementById('rsvpCloseSuccess');
+
+    const stateForm       = document.getElementById('rsvpFormState');
+    const stateLoading    = document.getElementById('rsvpLoadingState');
+    const stateSuccess    = document.getElementById('rsvpSuccessState');
+
+    // ── Helpers de estado ─────────────────────
+    function showState(state) {
+      stateForm.style.display    = state === 'form'    ? 'block' : 'none';
+      stateLoading.style.display = state === 'loading' ? 'block' : 'none';
+      stateSuccess.style.display = state === 'success' ? 'block' : 'none';
+      if (state === 'success') {
+        try { lucide.createIcons(); } catch(e) {}
+      }
+    }
+
+    function showError(msg) {
+      rsvpError.textContent = msg;
+      rsvpError.style.display = 'block';
+    }
+
+    function hideError() {
+      rsvpError.style.display = 'none';
+    }
+
+    // ── Abrir / cerrar modal ──────────────────
+    function openModal() {
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      showState('form');
+      hideError();
+
+      if (navBadge) {
         navBadge.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         navBadge.style.opacity = '0';
         navBadge.style.transform = 'scale(0)';
         setTimeout(() => navBadge.remove(), 300);
+      }
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (rsvpTrigger)  rsvpTrigger.addEventListener('click', openModal);
+    if (modalClose)   modalClose.addEventListener('click', closeModal);
+    if (closeSuccess) closeSuccess.addEventListener('click', closeModal);
+
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', e => {
+        if (e.target === modalOverlay) closeModal();
       });
     }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modalOverlay?.classList.contains('open')) closeModal();
+    });
+
+    // ── Submit del formulario → Supabase ──────
+    if (rsvpForm) {
+      rsvpForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        hideError();
+
+        const nombre     = document.getElementById('rsvpNombre').value.trim();
+        const apellido   = document.getElementById('rsvpApellido').value.trim();
+        const menu       = rsvpForm.querySelector('input[name="menu"]:checked')?.value;
+        const transporte = rsvpForm.querySelector('input[name="transporte"]:checked')?.value;
+        const mensaje    = document.getElementById('rsvpMensaje').value.trim();
+
+        // Validación básica
+        if (!nombre)     return showError('Por favor ingresá tu nombre.');
+        if (!apellido)   return showError('Por favor ingresá tu apellido.');
+        if (!menu)       return showError('Por favor elegí una opción de menú.');
+        if (!transporte) return showError('Por favor elegí una opción de transporte.');
+
+        showState('loading');
+        rsvpSubmit.disabled = true;
+
+        try {
+          const res = await fetch(`${SUPABASE_URL}/rest/v1/rsvp`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': SUPABASE_ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({ nombre, apellido, menu, transporte, mensaje: mensaje || null })
+          });
+
+          if (!res.ok) {
+            const errBody = await res.text();
+            throw new Error(`Error ${res.status}: ${errBody}`);
+          }
+
+          showState('success');
+          rsvpForm.reset();
+
+        } catch (err) {
+          console.error('Error al guardar RSVP:', err);
+          showState('form');
+          showError('Hubo un problema al enviar. Por favor intentá de nuevo en unos segundos.');
+        } finally {
+          rsvpSubmit.disabled = false;
+        }
+      });
+    }
+
   } catch (err) {
-    console.error("Error ocultando el badge de RSVP:", err);
+    console.error("Error configurando el modal de RSVP:", err);
   }
 
 });

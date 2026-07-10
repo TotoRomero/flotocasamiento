@@ -229,14 +229,10 @@
       </div>
     </div>
 
-    <!-- Abre el Google Form directo en una pestaña nueva.
-         (Antes esto abría un modal con el form embebido en un iframe,
-         pero muchos navegadores bloquean Forms embebidos de terceros
-         y queda en blanco. Un link directo funciona siempre.) -->
-    <a id="rsvpTrigger" class="btn btn-primary btn-icon" href="https://docs.google.com/forms/d/e/1FAIpQLSdujUon_1KUr5hXhPk7QeoRds1k8DcL8SSIhCzvOD4kQkODeA/viewform" target="_blank" rel="noopener">
+    <button id="rsvpTrigger" class="btn btn-primary btn-icon" type="button">
       <i data-lucide="heart-handshake" width="20" height="20"></i>
       Confirmar que venís
-    </a>
+    </button>
   </div>
 </div>
 
@@ -307,6 +303,141 @@
   <p>¡Los esperamos! ❤️</p>
   <p>K-Web Design © - 2026 Argentina</p>
 </footer>
+
+<!-- ═══════════════════════════════════════════
+     MODAL DE RSVP — Formulario nativo con Supabase
+═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true" aria-labelledby="rsvpModalTitle">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h3 id="rsvpModalTitle">
+        <i data-lucide="heart-handshake" width="20" height="20"></i>
+        Confirmar asistencia
+      </h3>
+      <button class="modal-close" id="rsvpModalClose" type="button" aria-label="Cerrar">
+        <i data-lucide="x" width="18" height="18"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- Estado: formulario -->
+      <div id="rsvpFormState">
+        <form id="rsvpForm" novalidate>
+
+          <div class="rsvp-field">
+            <label for="rsvpNombre">Nombre <span class="required">*</span></label>
+            <input type="text" id="rsvpNombre" placeholder="Tu nombre" autocomplete="given-name" required>
+          </div>
+
+          <div class="rsvp-field">
+            <label for="rsvpApellido">Apellido <span class="required">*</span></label>
+            <input type="text" id="rsvpApellido" placeholder="Tu apellido" autocomplete="family-name" required>
+          </div>
+
+          <div class="rsvp-field">
+            <label>Menú <span class="required">*</span></label>
+            <div class="rsvp-options">
+              <label class="rsvp-option">
+                <input type="radio" name="menu" value="standard" required>
+                <span>🍖 Estándar</span>
+              </label>
+              <label class="rsvp-option">
+                <input type="radio" name="menu" value="veggie">
+                <span>🥦 Vegetariano</span>
+              </label>
+              <label class="rsvp-option">
+                <input type="radio" name="menu" value="celiaco">
+                <span>🌾 Celíaco</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="rsvp-field">
+            <label>Transporte <span class="required">*</span></label>
+            <div class="rsvp-options">
+              <label class="rsvp-option">
+                <input type="radio" name="transporte" value="propio" required>
+                <span>🚗 Me arreglo solo</span>
+              </label>
+              <label class="rsvp-option">
+                <input type="radio" name="transporte" value="combi">
+                <span>🚌 Me interesa la combi</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="rsvp-field">
+            <label for="rsvpMensaje">Mensaje para los novios <span class="rsvp-optional">(opcional)</span></label>
+            <textarea id="rsvpMensaje" placeholder="¡Lo que quieras decirnos!" rows="3"></textarea>
+          </div>
+
+          <div id="rsvpError" class="rsvp-error" style="display:none;"></div>
+
+          <button type="submit" class="btn btn-primary btn-icon rsvp-submit" id="rsvpSubmit">
+            <i data-lucide="send" width="18" height="18"></i>
+            Confirmar asistencia
+          </button>
+
+        </form>
+      </div>
+
+      <!-- Estado: enviando -->
+      <div id="rsvpLoadingState" style="display:none;" class="rsvp-feedback">
+        <div class="rsvp-spinner"></div>
+        <p>Guardando tu confirmación…</p>
+      </div>
+
+      <!-- Estado: éxito -->
+      <div id="rsvpSuccessState" style="display:none;" class="rsvp-feedback">
+        <div class="rsvp-success-icon">
+          <i data-lucide="heart" width="40" height="40"></i>
+        </div>
+        <h3>¡Nos vemos el 21!</h3>
+        <p>Tu confirmación quedó registrada.<br>¡Gracias por acompañarnos! 🎉</p>
+        <button type="button" class="btn" id="rsvpCloseSuccess">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CSS del modal y formulario nativo -->
+<style>
+.modal-overlay{position:fixed;inset:0;background:rgba(58,46,42,0.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:2000;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal-box{background:#fff;border-radius:18px;box-shadow:0 20px 48px rgba(58,46,42,0.16);width:100%;max-width:500px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;transform:scale(0.92) translateY(16px);transition:transform 0.3s cubic-bezier(0.22,1,0.36,1)}
+.modal-overlay.open .modal-box{transform:scale(1) translateY(0)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #f1e3d3;flex-shrink:0}
+.modal-header h3{font-family:'Playfair Display',serif;margin:0;font-size:1.2em;color:#3a2e2a;display:flex;align-items:center;gap:8px}
+.modal-header h3 svg{color:#e76f51}
+.modal-close{background:#fffaf5;border:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#6b4f3a;transition:background 0.2s,color 0.2s,transform 0.2s;flex-shrink:0}
+.modal-close:hover{background:#e76f51;color:#fff;transform:rotate(90deg)}
+.modal-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:24px 24px 28px}
+.rsvp-field{margin-bottom:18px;text-align:left}
+.rsvp-field label{display:block;font-size:0.88em;font-weight:600;color:#3a2e2a;margin-bottom:7px;letter-spacing:0.2px}
+.rsvp-field input[type="text"],.rsvp-field textarea{width:100%;padding:11px 14px;border:1.5px solid #f1e3d3;border-radius:10px;font-family:'Poppins',sans-serif;font-size:0.92em;color:#3a2e2a;background:#fffaf5;transition:border-color 0.2s,box-shadow 0.2s;box-sizing:border-box}
+.rsvp-field input[type="text"]:focus,.rsvp-field textarea:focus{outline:none;border-color:#e76f51;box-shadow:0 0 0 3px rgba(231,111,81,0.12)}
+.rsvp-field textarea{resize:vertical;min-height:80px}
+.rsvp-options{display:flex;flex-direction:column;gap:8px}
+.rsvp-option{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #f1e3d3;border-radius:10px;cursor:pointer;transition:border-color 0.2s,background 0.2s;background:#fffaf5;font-size:0.9em;color:#3a2e2a}
+.rsvp-option:hover{border-color:#e76f51;background:#fdf1e7}
+.rsvp-option input[type="radio"]{accent-color:#e76f51;width:16px;height:16px;flex-shrink:0}
+.rsvp-option:has(input:checked){border-color:#e76f51;background:rgba(231,111,81,0.07)}
+.required{color:#e76f51}
+.rsvp-optional{font-weight:400;color:#8b6f5e;font-size:0.85em}
+.rsvp-error{background:#fff0ee;border:1px solid #f4a261;border-radius:10px;padding:10px 14px;font-size:0.85em;color:#c95a3d;margin-bottom:14px}
+.rsvp-submit{width:100%;justify-content:center;margin:4px 0 0}
+.rsvp-feedback{text-align:center;padding:20px 0 10px}
+.rsvp-spinner{width:40px;height:40px;border:3px solid #f1e3d3;border-top-color:#e76f51;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rsvp-success-icon{color:#e76f51;margin-bottom:12px}
+.rsvp-success-icon svg{width:48px;height:48px}
+.rsvp-feedback h3{font-family:'Playfair Display',serif;color:#3a2e2a;margin:0 0 8px}
+.rsvp-feedback p{color:#6b4f3a;line-height:1.6}
+@media(max-width:600px){.modal-overlay{padding:0;align-items:flex-end}.modal-box{max-width:100%;max-height:92vh;border-radius:18px 18px 0 0}.modal-body{padding:20px 18px 24px}}
+</style>
 
 <!-- Lógica propia del sitio -->
 <script src="script.js"></script>
