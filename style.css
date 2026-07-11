@@ -533,15 +533,12 @@ img:hover {
 }
 
 /* ───────────────────────────────────────────
-   11. RSVP + MODAL DEL FORMULARIO
+   11. RSVP + MODAL + FORMULARIO NATIVO
 ─────────────────────────────────────────── */
 .rsvp-section .card {
   border-top: 4px solid var(--terracota);
   background: var(--white);
 }
-
-/* Botón "Confirmar que venís" reutiliza .btn-primary.btn-icon,
-   pero ahora es un <button> que abre el modal (ver script.js) */
 
 /* ── Modal: fondo oscuro ─────────── */
 .modal-overlay {
@@ -569,8 +566,8 @@ img:hover {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   width: 100%;
-  max-width: 560px;
-  max-height: 88vh;
+  max-width: 500px;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -592,7 +589,7 @@ img:hover {
 .modal-header h3 {
   font-family: 'Playfair Display', serif;
   margin: 0;
-  font-size: 1.25em;
+  font-size: 1.2em;
   color: var(--brown);
   display: flex;
   align-items: center;
@@ -624,15 +621,81 @@ img:hover {
   flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  padding: 24px 24px 28px;
 }
 
-.modal-body iframe {
-  display: block;
+/* ── Formulario nativo RSVP ──────── */
+.rsvp-field { margin-bottom: 18px; text-align: left; }
+.rsvp-field label { display: block; font-size: 0.88em; font-weight: 600; color: var(--brown); margin-bottom: 7px; letter-spacing: 0.2px; }
+.rsvp-field input[type="text"],
+.rsvp-field textarea {
   width: 100%;
-  height: 100%;
-  min-height: 620px;
-  border: none;
+  padding: 11px 14px;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: var(--radius-sm);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.92em;
+  color: var(--brown);
+  background: var(--cream);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
 }
+.rsvp-field input[type="text"]:focus,
+.rsvp-field textarea:focus {
+  outline: none;
+  border-color: var(--terracota);
+  box-shadow: 0 0 0 3px rgba(231,111,81,0.12);
+}
+.rsvp-field textarea { resize: vertical; min-height: 80px; }
+
+.rsvp-options { display: flex; flex-direction: column; gap: 8px; }
+.rsvp-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  background: var(--cream);
+  font-size: 0.9em;
+  color: var(--brown);
+}
+.rsvp-option:hover { border-color: var(--terracota); background: var(--cream-mid); }
+.rsvp-option input[type="radio"] { accent-color: var(--terracota); width: 16px; height: 16px; flex-shrink: 0; }
+.rsvp-option:has(input:checked) { border-color: var(--terracota); background: rgba(231,111,81,0.07); }
+
+.required { color: var(--terracota); }
+.rsvp-optional { font-weight: 400; color: var(--brown-light); font-size: 0.85em; }
+
+.rsvp-error {
+  background: #fff0ee;
+  border: 1px solid var(--terracota-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.85em;
+  color: var(--terracota-dark);
+  margin-bottom: 14px;
+}
+
+.rsvp-submit { width: 100%; justify-content: center; margin: 4px 0 0; }
+
+.rsvp-feedback { text-align: center; padding: 20px 0 10px; }
+.rsvp-spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--cream-dark);
+  border-top-color: var(--terracota);
+  border-radius: 50%;
+  animation: rsvpSpin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes rsvpSpin { to { transform: rotate(360deg); } }
+
+.rsvp-success-icon { color: var(--terracota); margin-bottom: 12px; }
+.rsvp-success-icon svg { width: 48px; height: 48px; }
+.rsvp-feedback h3 { font-family: 'Playfair Display', serif; color: var(--brown); margin: 0 0 8px; }
+.rsvp-feedback p { color: var(--brown-mid); line-height: 1.6; }
 
 /* ───────────────────────────────────────────
    12. CARRUSEL
@@ -813,5 +876,5 @@ footer p:first-child {
     max-height: 92vh;
     border-radius: var(--radius-md) var(--radius-md) 0 0;
   }
-  .modal-body iframe { min-height: 560px; }
+  .modal-body { padding: 20px 18px 24px; }
 }
