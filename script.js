@@ -292,6 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const nombre     = document.getElementById('rsvpNombre').value.trim();
         const apellido   = document.getElementById('rsvpApellido').value.trim();
+        const correo     = document.getElementById('rsvpCorreo').value.trim();
         const menu       = rsvpForm.querySelector('input[name="menu"]:checked')?.value;
         const transporte = rsvpForm.querySelector('input[name="transporte"]:checked')?.value;
         const mensaje    = document.getElementById('rsvpMensaje').value.trim();
@@ -299,6 +300,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Validación básica
         if (!nombre)     return showError('Por favor ingresá tu nombre.');
         if (!apellido)   return showError('Por favor ingresá tu apellido.');
+        if (!correo)     return showError('Por favor ingresá tu correo electrónico.');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) return showError('El correo no parece válido. Revisalo.');
         if (!menu)       return showError('Por favor elegí una opción de menú.');
         if (!transporte) return showError('Por favor elegí una opción de transporte.');
 
@@ -314,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
               'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
               'Prefer': 'return=minimal'
             },
-            body: JSON.stringify({ nombre, apellido, menu, transporte, mensaje: mensaje || null })
+            body: JSON.stringify({ nombre, apellido, correo, menu, transporte, mensaje: mensaje || null })
           });
 
           if (!res.ok) {

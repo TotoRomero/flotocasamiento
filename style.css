@@ -628,6 +628,7 @@ img:hover {
 .rsvp-field { margin-bottom: 18px; text-align: left; }
 .rsvp-field label { display: block; font-size: 0.88em; font-weight: 600; color: var(--brown); margin-bottom: 7px; letter-spacing: 0.2px; }
 .rsvp-field input[type="text"],
+.rsvp-field input[type="email"],
 .rsvp-field textarea {
   width: 100%;
   padding: 11px 14px;
@@ -641,6 +642,7 @@ img:hover {
   box-sizing: border-box;
 }
 .rsvp-field input[type="text"]:focus,
+.rsvp-field input[type="email"]:focus,
 .rsvp-field textarea:focus {
   outline: none;
   border-color: var(--terracota);
@@ -832,7 +834,46 @@ footer p:first-child {
 }
 
 /* ───────────────────────────────────────────
-   15. MOBILE
+   15. GRILLA DE 2 COLUMNAS (desktop)
+─────────────────────────────────────────── */
+
+/* Historia ocupa el ancho completo */
+#historia .card,
+.card-wide {
+  max-width: 860px;
+}
+
+/* Grilla 2 col en pantallas anchas */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.cards-grid .section {
+  padding: 40px 20px;
+}
+
+.cards-grid .card {
+  max-width: 100%;
+  height: 100%;
+}
+
+/* Las cards dentro de la grilla estiran para igualar altura por fila */
+.cards-grid .section {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-grid .card {
+  flex: 1;
+}
+
+/* ───────────────────────────────────────────
+   16. MOBILE
 ─────────────────────────────────────────── */
 @media (max-width: 600px) {
   .section { padding: 56px 16px; }
@@ -865,9 +906,16 @@ footer p:first-child {
     width: fit-content;
   }
 
-  .divider img { width: 100px; }
-
   .slide img { height: 260px; }
+
+  /* Grilla: colapsa a 1 columna en mobile */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    padding: 0 0 20px;
+  }
+  .cards-grid .section {
+    padding: 40px 16px;
+  }
 
   /* Modal a pantalla casi completa en mobile */
   .modal-overlay { padding: 0; align-items: flex-end; }
