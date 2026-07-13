@@ -42,7 +42,7 @@
   --radius-lg:      28px;
 }
 
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -59,7 +59,7 @@ body {
   color: var(--brown);
   text-align: center;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
 }
 
@@ -944,11 +944,22 @@ footer p:first-child {
   /* Grilla: colapsa a 1 columna en mobile */
   .cards-grid {
     grid-template-columns: 1fr;
-    padding: 0 16px 20px;
+    padding: 0 12px 20px;
+    max-width: 100%;
+    overflow-x: clip;
   }
   .cards-grid .section,
   .cards-grid .section-full {
-    padding: 24px 0;
+    padding: 20px 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .cards-grid .card {
+    margin: 0;
+    min-width: 0;
+  }
+  .carousel {
+    max-width: 100%;
   }
 
   /* Modal a pantalla casi completa en mobile */
