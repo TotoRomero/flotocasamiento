@@ -91,42 +91,43 @@
   </a>
 </nav>
 
-<!-- HISTORIA — ancho completo, tiene el carrusel -->
-<div id="historia" class="section fade-in historia-section">
-  <div class="card card-wide">
-    <h2 class="section-title">
-      <i data-lucide="book-open" width="24" height="24"></i>
-      Nuestra historia
-    </h2>
-    <p style="margin-top:15px;">
-      Todo empezó casi sin darnos cuenta en la Taberna de Gilgamesh con una stout (varias) y un gin tonic (varios) de por medio.
-    </p>
-    <p>
-      Desde pasar una pandemia en monoambiente hasta viajes lluviosos, mudanzas y momentos compartidos fuimos construyendo este camino juntos que nos trajo hasta acá...
-    </p>
-    <p>Hoy queremos celebrarlo con <strong>ustedes</strong> ✨</p>
-    <hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
-    <div class="carousel">
-      <button class="carousel-btn prev">❮</button>
-      <div class="carousel-track">
-        <div class="slide"><img src="taberna.jpg" alt="Taberna de Gilgamesh"></div>
-        <div class="slide"><img src="vino.jpg" alt="Brindis"></div>
-        <div class="slide"><img src="cristo.jpg" alt="Viaje"></div>
-        <div class="slide"><img src="escalera.jpg" alt="Escalera"></div>
-        <div class="slide"><img src="lluvia.jpg" alt="Viaje lluvioso"></div>
-        <div class="slide"><img src="uru.jpg" alt="Uruguay"></div>
-        <div class="slide"><img src="argentina.jpg" alt="Argentina"></div>
-        <div class="slide"><img src="cascada.jpg" alt="Cascada"></div>
-        <div class="slide"><img src="vinoplaya.jpg" alt="Playa"></div>
-      </div>
-      <button class="carousel-btn next">❯</button>
-    </div>
-    <div class="carousel-dots" id="carouselDots"></div>
-  </div>
-</div>
-
-<!-- GRILLA 2 COLUMNAS desktop / 1 columna mobile -->
+<!-- GRILLA ÚNICA: Historia + todas las secciones -->
 <div class="cards-grid">
+
+  <!-- HISTORIA — ancho completo -->
+  <div id="historia" class="section fade-in historia-section section-full">
+    <div class="card">
+      <h2 class="section-title">
+        <i data-lucide="book-open" width="24" height="24"></i>
+        Nuestra historia
+      </h2>
+      <span class="title-divider"></span>
+      <p style="margin-top:15px;">
+        Todo empezó casi sin darnos cuenta en la Taberna de Gilgamesh con una stout (varias) y un gin tonic (varios) de por medio.
+      </p>
+      <p>
+        Desde pasar una pandemia en monoambiente hasta viajes lluviosos, mudanzas y momentos compartidos fuimos construyendo este camino juntos que nos trajo hasta acá...
+      </p>
+      <p>Hoy queremos celebrarlo con <strong>ustedes</strong> ✨</p>
+      <hr style="margin:25px auto; width:60px; border:1px solid #e76f51; opacity:0.4;">
+      <div class="carousel">
+        <button class="carousel-btn prev">❮</button>
+        <div class="carousel-track">
+          <div class="slide"><img src="taberna.jpg" alt="Taberna de Gilgamesh"></div>
+          <div class="slide"><img src="vino.jpg" alt="Brindis"></div>
+          <div class="slide"><img src="cristo.jpg" alt="Viaje"></div>
+          <div class="slide"><img src="escalera.jpg" alt="Escalera"></div>
+          <div class="slide"><img src="lluvia.jpg" alt="Viaje lluvioso"></div>
+          <div class="slide"><img src="uru.jpg" alt="Uruguay"></div>
+          <div class="slide"><img src="argentina.jpg" alt="Argentina"></div>
+          <div class="slide"><img src="cascada.jpg" alt="Cascada"></div>
+          <div class="slide"><img src="vinoplaya.jpg" alt="Playa"></div>
+        </div>
+        <button class="carousel-btn next">❯</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </div>
 
   <!-- FILA 1: Fecha | Lugar (solo datos, sin mapa) -->
 
@@ -137,6 +138,7 @@
         <i data-lucide="calendar-heart" width="24" height="24"></i>
         Fecha
       </h2>
+      <span class="title-divider"></span>
       <p class="fecha-sub">21 de Noviembre de 2026</p>
       <p class="fecha-sub">Sábado · 18:00 hs · puntual</p>
       <img src="fecha2.jpeg" alt="Calendario del evento" style="max-width:250px;">
@@ -155,6 +157,7 @@
         <i data-lucide="map-pin" width="24" height="24"></i>
         Lugar
       </h2>
+      <span class="title-divider"></span>
       <img src="samara.png" alt="Samara" style="max-width:320px; display:block; margin:20px auto 0;">
       <p>
         <strong>Samara Pilar</strong><br>
@@ -172,6 +175,7 @@
         <i data-lucide="shirt" width="24" height="24"></i>
         Dress Code
       </h2>
+      <span class="title-divider"></span>
       <p><strong>Elegante</strong></p>
       <p>
         Queremos que se sientan cómodos y cancheros ✨<br>
@@ -193,6 +197,7 @@
         <i data-lucide="car" width="24" height="24"></i>
         Cómo llego
       </h2>
+      <span class="title-divider"></span>
       <iframe
         src="https://www.google.com/maps?q=Samara+Pilar&output=embed"
         width="100%"
@@ -215,13 +220,14 @@
         <i data-lucide="check-circle" width="24" height="24"></i>
         Confirmar asistencia
       </h2>
+      <span class="title-divider"></span>
       <p style="margin-top:15px;">
         Tu confirmación es muy importante para poder organizar todo de la mejor manera
       </p>
       <div class="info-list" style="max-width:600px; margin:0 auto;">
         <div class="info-item">
           <i data-lucide="clipboard-list" width="18" height="18" class="icon-inline"></i>
-          <span>Por favor confirmar asistencia antes del 01/10</span>
+          <span>Te vamos a pedir que nos indiques si necesitás menú especial (Veggie o celíaco)</span>
         </div>
         <div class="info-item">
           <i data-lucide="navigation-2" width="18" height="18" class="icon-inline"></i>
@@ -248,9 +254,10 @@
         <i data-lucide="gift" width="24" height="24"></i>
         Nuestro regalo
       </h2>
+      <span class="title-divider"></span>
       <p style="margin-top:15px;">
         El mejor regalo es que nos acompañen en este día tan especial. Pero si además querés ayudarnos a cumplir nuestro próximo sueño…<br>
-        ¡Nos encantaría contar con su ayuda para mejorar nuestra casa y la Luna de Miel!
+        ¡Nos encantaría contar con su ayuda para mejorar nuestra casa y nuestra Luna de Miel!
       </p>
       <p style="margin-top:8px;">
         <i data-lucide="house" width="20" height="20" style="vertical-align:middle; color:#e76f51;"></i>
@@ -290,6 +297,7 @@
         <i data-lucide="camera" width="24" height="24"></i>
         Papparazzis
       </h2>
+      <span class="title-divider"></span>
       <p>¡Escaneá el QR o ingresá con el botón y subí tus fotos de la fiesta!</p>
       <img src="qr.png" alt="QR código para subir fotos" style="max-width:200px;">
       <br>
