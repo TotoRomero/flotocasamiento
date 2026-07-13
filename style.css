@@ -872,6 +872,17 @@ footer p:first-child {
   flex: 1;
 }
 
+/* RSVP y otras secciones de ancho completo dentro de la grilla */
+.cards-grid .section-full {
+  grid-column: 1 / -1;
+}
+
+.cards-grid .section-full .card {
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 /* ───────────────────────────────────────────
    16. MOBILE
 ─────────────────────────────────────────── */
