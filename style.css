@@ -837,10 +837,15 @@ footer p:first-child {
    15. GRILLA DE 2 COLUMNAS (desktop)
 ─────────────────────────────────────────── */
 
-/* Historia ocupa el ancho completo */
+/* Historia — fuera de la grilla, misma lógica visual */
+#historia {
+  padding: 60px 40px;
+  background: transparent;
+}
 #historia .card,
 .card-wide {
-  max-width: 860px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* Grilla 2 col en pantallas anchas */
@@ -850,38 +855,40 @@ footer p:first-child {
   gap: 0;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px 40px;
+  padding: 0 40px 60px;
+  background: transparent;
 }
 
+/* Las secciones dentro de la grilla no tienen fondo propio */
 .cards-grid .section {
-  padding: 40px 20px;
-}
-
-.cards-grid .card {
-  max-width: 100%;
-  height: 100%;
-}
-
-/* Las cards dentro de la grilla estiran para igualar altura por fila */
-.cards-grid .section {
+  padding: 30px 20px;
+  background: transparent;
   display: flex;
   flex-direction: column;
 }
 
 .cards-grid .card {
+  max-width: 100%;
   flex: 1;
 }
 
 /* RSVP y otras secciones de ancho completo dentro de la grilla */
 .cards-grid .section-full {
   grid-column: 1 / -1;
+  padding: 30px 20px;
 }
 
 .cards-grid .section-full .card {
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto;
   width: 100%;
 }
+
+/* Títulos centrados en todos los contextos */
+h2 { text-align: center; }
+.section-title { justify-content: center; }
+.card .section-title h2,
+h2.section-title { text-align: center; }
 
 /* ───────────────────────────────────────────
    16. MOBILE
@@ -922,10 +929,14 @@ footer p:first-child {
   /* Grilla: colapsa a 1 columna en mobile */
   .cards-grid {
     grid-template-columns: 1fr;
-    padding: 0 0 20px;
+    padding: 0 16px 20px;
   }
-  .cards-grid .section {
-    padding: 40px 16px;
+  .cards-grid .section,
+  .cards-grid .section-full {
+    padding: 24px 0;
+  }
+  #historia {
+    padding: 48px 16px;
   }
 
   /* Modal a pantalla casi completa en mobile */
