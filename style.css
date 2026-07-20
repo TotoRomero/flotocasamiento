@@ -129,7 +129,7 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
   justify-content: center;
   text-align: center;
   color: white;
-  background: url('165.jpg') center 38% / cover no-repeat;
+  background: url('165.jpg') center 55% / cover no-repeat;
   overflow: hidden;
 }
 
@@ -249,28 +249,28 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
   background: rgba(255,250,245,0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 10px 20px;
+  padding: 12px 32px;
   box-shadow: 0 2px 16px rgba(58,46,42,0.08);
   z-index: 1000;
   display: flex;
   justify-content: center;
-  gap: 6px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .floating-menu a {
   text-decoration: none;
   color: var(--brown-mid);
-  font-size: 0.78em;
+  font-size: 0.92em;
   font-weight: 500;
   letter-spacing: 0.3px;
-  position: relative; /* asegura que el badge se posicione bien */
-  padding: 6px 10px;
+  position: relative;
+  padding: 10px 16px;
   border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 5px;
   transition: color 0.2s ease, background 0.2s ease;
 }
 
@@ -283,10 +283,12 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
 .floating-menu a svg {
   color: var(--terracota);
   transition: transform 0.25s ease;
+  width: 22px;
+  height: 22px;
 }
 .floating-menu a:hover svg { transform: scale(1.15); }
 
-.floating-menu .nav-label { font-size: 0.72em; }
+.floating-menu .nav-label { font-size: 0.78em; }
 
 .nav-badge {
   position: absolute;
@@ -315,6 +317,8 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
 @media (max-width: 600px) {
   .floating-menu { gap: 2px; padding: 8px 6px; }
   .floating-menu a { font-size: 0.68em; padding: 5px 7px; }
+  .floating-menu a svg { width: 18px; height: 18px; }
+  .floating-menu .nav-label { font-size: 0.72em; }
 }
 
 /* ───────────────────────────────────────────
@@ -913,6 +917,7 @@ footer p:first-child {
 
   .hero h1 { font-size: 2.3em; }
   .subtitle { font-size: 1em; }
+  .hero { background-position: 70% 55%; }
 
   .card { padding: 32px 22px; border-radius: var(--radius-md); }
   .card:hover { transform: none; box-shadow: var(--shadow-md); }
