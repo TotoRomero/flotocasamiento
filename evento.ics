@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Flora & Toto//Casamiento//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:casamiento-flora-toto-20261121@flotocasamiento.com
+DTSTAMP:20260101T000000Z
+DTSTART;TZID=America/Argentina/Buenos_Aires:20261121T180000
+DTEND;TZID=America/Argentina/Buenos_Aires:20261122T020000
+SUMMARY:Casamiento Flora & Toto 💍
+DESCRIPTION:¡Nos casamos! Te esperamos para celebrar juntos este día tan especial.\n\nSamara Pilar\nChile 2675 (Km 47 de Panamericana Ramal Pilar)\nDel Viso\n\nMás info: https://flotocasamiento.com
+LOCATION:Samara Pilar\, Chile 2675\, Del Viso\, Buenos Aires\, Argentina
+GEO:-34.4681;-58.7897
+URL:https://flotocasamiento.com
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:¡En una semana es el casamiento de Flora & Toto! 💍
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:¡Mañana es el casamiento de Flora & Toto! 🎉
+END:VALARM
+END:VEVENT
+END:VCALENDAR
