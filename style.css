@@ -129,7 +129,7 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
   justify-content: center;
   text-align: center;
   color: white;
-  background: url('165.jpg') center 100% / cover no-repeat;
+  background: url('165.jpg') center 60% / cover no-repeat;
   overflow: hidden;
 }
 
@@ -917,7 +917,7 @@ footer p:first-child {
 
   .hero h1 { font-size: 2.3em; }
   .subtitle { font-size: 1em; }
-  .hero { background-position: 70% 55%; }
+  .hero { background-position: 90% center; }
 
   .card { padding: 32px 22px; border-radius: var(--radius-md); }
   .card:hover { transform: none; box-shadow: var(--shadow-md); }
