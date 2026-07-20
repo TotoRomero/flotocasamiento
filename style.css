@@ -129,7 +129,7 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
   justify-content: center;
   text-align: center;
   color: white;
-  background: url('165.jpg') center 55% / cover no-repeat;
+  background: url('165.jpg') center 65% / cover no-repeat;
   overflow: hidden;
 }
 
