@@ -917,7 +917,10 @@ footer p:first-child {
 
   .hero h1 { font-size: 2.3em; }
   .subtitle { font-size: 1em; }
-  .hero { background-position: 90% center; }
+  .hero {
+    background-image: url('165_mobile.jpg');
+    background-position: center 5%;
+  }
 
   .card { padding: 32px 22px; border-radius: var(--radius-md); }
   .card:hover { transform: none; box-shadow: var(--shadow-md); }
