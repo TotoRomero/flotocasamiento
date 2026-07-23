@@ -315,10 +315,10 @@ p { line-height: 1.7; color: var(--brown-mid); margin: 0 0 10px; }
 }
 
 @media (max-width: 600px) {
-  .floating-menu { gap: 2px; padding: 8px 6px; }
-  .floating-menu a { font-size: 0.68em; padding: 5px 7px; }
-  .floating-menu a svg { width: 18px; height: 18px; }
-  .floating-menu .nav-label { font-size: 0.72em; }
+  .floating-menu { gap: 0; padding: 6px 4px; }
+  .floating-menu a { font-size: 0.62em; padding: 5px 5px; }
+  .floating-menu a svg { width: 16px; height: 16px; }
+  .floating-menu .nav-label { font-size: 0.68em; }
 }
 
 /* ───────────────────────────────────────────
