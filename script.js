@@ -59,7 +59,16 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateCountdown() {
       const now = new Date().getTime();
       const dist = weddingDate - now;
-      if (dist < 0) return;
+
+      if (dist <= 0) {
+        // ¡Es el gran día!
+        const box = document.querySelector('.countdown-box');
+        if (box) {
+          box.innerHTML = '<p style="font-size:1.4em; font-weight:600; letter-spacing:1px; margin:0;">¡Hoy es el gran día! ❤️</p>';
+        }
+        return;
+      }
+
       document.getElementById("days").innerText = Math.floor(dist / 86400000);
       document.getElementById("hours").innerText = Math.floor((dist / 3600000) % 24);
       document.getElementById("minutes").innerText = Math.floor((dist / 60000) % 60);
